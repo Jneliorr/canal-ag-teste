@@ -1,0 +1,18 @@
+﻿Table_name;ID;Table_type;Table_source;Table_size;Table_status;Table_uses;Table_storage_mode;Usage_sub_level_type;Used_in_name;Used_in_ID;Used_in_object_type;Used_in_table;Used_in_source;Used_in_data_type;Used_in_size;Used_in_status;Used_in_number_of_uses;Used_in_format_string;Used_in_display_folder
+Vendas;12;Table;canal_v1 (localhost:56698);110.1 kB;Used 42.9% (3/7);3;Import;Columns;Data;25;Column;Vendas;canal_v1 (localhost:56698);Text;19.0 kB;Unused;0;;
+Vendas;12;Table;canal_v1 (localhost:56698);110.1 kB;Used 42.9% (3/7);3;Import;Columns;ID_Venda;24;Column;Vendas;canal_v1 (localhost:56698);Text;18.6 kB;Unused;0;;
+Vendas;12;Table;canal_v1 (localhost:56698);110.1 kB;Used 42.9% (3/7);3;Import;Columns;ID_Cliente;27;Column;Vendas;canal_v1 (localhost:56698);Text;18.1 kB;Used;1;;
+Vendas;12;Table;canal_v1 (localhost:56698);110.1 kB;Used 42.9% (3/7);3;Import;Columns;ID_Produto;26;Column;Vendas;canal_v1 (localhost:56698);Text;18.1 kB;Used;1;;
+Vendas;12;Table;canal_v1 (localhost:56698);110.1 kB;Used 42.9% (3/7);3;Import;Columns;ID_Vendedor;28;Column;Vendas;canal_v1 (localhost:56698);Text;18.1 kB;Used;1;;
+Vendas;12;Table;canal_v1 (localhost:56698);110.1 kB;Used 42.9% (3/7);3;Import;Columns;Quantidade;29;Column;Vendas;canal_v1 (localhost:56698);Text;17.5 kB;Unused;0;;
+Vendas;12;Table;canal_v1 (localhost:56698);110.1 kB;Used 42.9% (3/7);3;Import;Columns;Valor_Unitario;30;Column;Vendas;canal_v1 (localhost:56698);Double;600.0 B;Unused;0;;
+Clientes;18;Table;canal_v1 (localhost:56698);75.2 kB;Used 25.0% (1/4);1;Import;Columns;Nome_Cliente;35;Column;Clientes;canal_v1 (localhost:56698);Text;19.8 kB;Unused;0;;
+Clientes;18;Table;canal_v1 (localhost:56698);75.2 kB;Used 25.0% (1/4);1;Import;Columns;Cidade;36;Column;Clientes;canal_v1 (localhost:56698);Text;19.1 kB;Unused;0;;
+Clientes;18;Table;canal_v1 (localhost:56698);75.2 kB;Used 25.0% (1/4);1;Import;Columns;ID_Cliente;34;Column;Clientes;canal_v1 (localhost:56698);Text;18.6 kB;Used;1;;
+Clientes;18;Table;canal_v1 (localhost:56698);75.2 kB;Used 25.0% (1/4);1;Import;Columns;Estado;37;Column;Clientes;canal_v1 (localhost:56698);Text;17.8 kB;Unused;0;;
+Vendedores;21;Table;canal_v1 (localhost:56698);55.7 kB;Used 33.3% (1/3);1;Import;Columns;Nome_Vendedor;39;Column;Vendedores;canal_v1 (localhost:56698);Text;19.8 kB;Unused;0;;
+Vendedores;21;Table;canal_v1 (localhost:56698);55.7 kB;Used 33.3% (1/3);1;Import;Columns;ID_Vendedor;38;Column;Vendedores;canal_v1 (localhost:56698);Text;18.6 kB;Used;1;;
+Vendedores;21;Table;canal_v1 (localhost:56698);55.7 kB;Used 33.3% (1/3);1;Import;Columns;Equipe;40;Column;Vendedores;canal_v1 (localhost:56698);Text;17.4 kB;Unused;0;;
+Produtos;15;Table;canal_v1 (localhost:56698);55.5 kB;Used 33.3% (1/3);1;Import;Columns;Nome_Produto;32;Column;Produtos;canal_v1 (localhost:56698);Text;19.5 kB;Unused;0;;
+Produtos;15;Table;canal_v1 (localhost:56698);55.5 kB;Used 33.3% (1/3);1;Import;Columns;ID_Produto;31;Column;Produtos;canal_v1 (localhost:56698);Text;18.6 kB;Used;1;;
+Produtos;15;Table;canal_v1 (localhost:56698);55.5 kB;Used 33.3% (1/3);1;Import;Columns;Categoria;33;Column;Produtos;canal_v1 (localhost:56698);Text;17.4 kB;Unused;0;;

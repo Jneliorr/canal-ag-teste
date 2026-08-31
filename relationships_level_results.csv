@@ -1,0 +1,4 @@
+﻿Name;ID;Is_active;Cross_filter;Cardinality;Status;DAX_uses;From_column;To_column
+'Vendas'[ID_Cliente] N <- 1 'Clientes'[ID_Cliente];AutoDetected_ae59214a-34ea-4ed2-beab-5beb64070c47;Active;Single; N <- 1 ;Used;0;Vendas[ID_Cliente];Clientes[ID_Cliente]
+'Vendas'[ID_Produto] N <- 1 'Produtos'[ID_Produto];AutoDetected_92e57305-38ae-4bce-957b-2616ff73bd3e;Active;Single; N <- 1 ;Used;0;Vendas[ID_Produto];Produtos[ID_Produto]
+'Vendas'[ID_Vendedor] N <- 1 'Vendedores'[ID_Vendedor];AutoDetected_c43d17d1-7fe5-430f-bc1f-746bb8b7c175;Active;Single; N <- 1 ;Used;0;Vendas[ID_Vendedor];Vendedores[ID_Vendedor]
