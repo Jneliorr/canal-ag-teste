@@ -1,0 +1,12 @@
+relationship AutoDetected_92e57305-38ae-4bce-957b-2616ff73bd3e
+	fromColumn: Vendas.ID_Produto
+	toColumn: Produtos.ID_Produto
+
+relationship AutoDetected_ae59214a-34ea-4ed2-beab-5beb64070c47
+	fromColumn: Vendas.ID_Cliente
+	toColumn: Clientes.ID_Cliente
+
+relationship AutoDetected_c43d17d1-7fe5-430f-bc1f-746bb8b7c175
+	fromColumn: Vendas.ID_Vendedor
+	toColumn: Vendedores.ID_Vendedor
+

@@ -1,0 +1,41 @@
+table Vendedores
+	lineageTag: ade6eb1a-7513-409b-b98e-8818be7b8ad0
+
+	column ID_Vendedor
+		dataType: string
+		lineageTag: 4cda7b5e-f889-49ef-a910-c92f15bba1c8
+		summarizeBy: none
+		sourceColumn: ID_Vendedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nome_Vendedor
+		dataType: string
+		lineageTag: 9c0543b2-1899-461b-9d68-c61f2e5c57c1
+		summarizeBy: none
+		sourceColumn: Nome_Vendedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Equipe
+		dataType: string
+		lineageTag: e620cd26-cf62-4ef8-80d7-0a830492a493
+		summarizeBy: none
+		sourceColumn: Equipe
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Vendedores = m
+		mode: import
+		source =
+				let
+				  Origem = Csv.Document(File.Contents("C:\Users\Nelio\Documents\GitHub\canal-ag-teste\data\raw\Vendedores.csv"), [Delimiter = ",", Columns = 3, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Origem, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"ID_Vendedor", type text}, {"Nome_Vendedor", type text}, {"Equipe", type text}})
+				in
+				  #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+
