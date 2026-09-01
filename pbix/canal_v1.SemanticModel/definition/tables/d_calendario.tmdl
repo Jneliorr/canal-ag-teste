@@ -121,6 +121,29 @@ table d_calendario
 
 		annotation SummarizationSetBy = Automatic
 
+	hierarchy 'DataId Hierarquia'
+		lineageTag: 28556136-c31c-40df-9b77-5e095591e770
+
+		level DataId
+			lineageTag: 4f695815-a1f3-4c03-a5b6-26b03036997a
+			column: DataId
+
+		level Ano
+			lineageTag: 481504cb-8451-4e0d-a73c-1aa213f2edab
+			column: Ano
+
+		level 'Mes Abreviado'
+			lineageTag: d8f36fdd-541d-4df8-8cbd-0b8a1d47a717
+			column: 'Mes Abreviado'
+
+		level 'Nome do Dia'
+			lineageTag: 0c098e68-108a-4d71-9812-98415e10ba4e
+			column: 'Nome do Dia'
+
+		level Dia
+			lineageTag: f0b27ecd-35de-432e-aadb-2a38a1b71485
+			column: Dia
+
 	partition d_calendario = m
 		mode: import
 		source = ```

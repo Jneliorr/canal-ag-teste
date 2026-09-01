@@ -83,7 +83,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -91,6 +91,13 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
                 }
               }
             }
@@ -125,6 +132,13 @@
               "expr": {
                 "Literal": {
                   "Value": "20L"
+                }
+              }
+            },
+            "maxMarginFactor": {
+              "expr": {
+                "Literal": {
+                  "Value": "30L"
                 }
               }
             }
@@ -191,7 +205,7 @@
             "left": {
               "expr": {
                 "Literal": {
-                  "Value": "17D"
+                  "Value": "0D"
                 }
               }
             },
@@ -203,6 +217,13 @@
               }
             },
             "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "top": {
               "expr": {
                 "Literal": {
                   "Value": "0D"

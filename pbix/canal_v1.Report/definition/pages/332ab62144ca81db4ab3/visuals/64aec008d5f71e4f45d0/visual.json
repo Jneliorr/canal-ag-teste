@@ -17,20 +17,88 @@
           "projections": [
             {
               "field": {
-                "Column": {
+                "HierarchyLevel": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "d_calendario"
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "d_calendario"
+                        }
+                      },
+                      "Hierarchy": "DataId Hierarquia"
                     }
                   },
-                  "Property": "DataId"
+                  "Level": "Ano"
                 }
               },
-              "queryRef": "d_calendario.DataId.Variation.Hierarquia de datas.Ano",
-              "nativeQueryRef": "DataId Ano",
+              "queryRef": "d_calendario.DataId Hierarquia.Ano",
+              "nativeQueryRef": "DataId Hierarquia Ano",
               "active": true
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "d_calendario"
+                        }
+                      },
+                      "Hierarchy": "DataId Hierarquia"
+                    }
+                  },
+                  "Level": "Mes Abreviado"
+                }
+              },
+              "queryRef": "d_calendario.DataId Hierarquia.Mes Abreviado",
+              "nativeQueryRef": "DataId Hierarquia Mes Abreviado",
+              "active": true
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "d_calendario"
+                        }
+                      },
+                      "Hierarchy": "DataId Hierarquia"
+                    }
+                  },
+                  "Level": "Nome do Dia"
+                }
+              },
+              "queryRef": "d_calendario.DataId Hierarquia.Nome do Dia",
+              "nativeQueryRef": "DataId Hierarquia Nome do Dia",
+              "active": false
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "d_calendario"
+                        }
+                      },
+                      "Hierarchy": "DataId Hierarquia"
+                    }
+                  },
+                  "Level": "Dia"
+                }
+              },
+              "queryRef": "d_calendario.DataId Hierarquia.Dia",
+              "nativeQueryRef": "DataId Hierarquia Dia",
+              "active": false
             }
           ]
+        },
+        "Series": {
+          "projections": []
         },
         "Y": {
           "projections": [
@@ -50,23 +118,6 @@
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "d_calendario"
-                  }
-                },
-                "Property": "DataId"
-              }
-            },
-            "direction": "Ascending"
-          }
-        ]
       }
     },
     "objects": {
@@ -240,8 +291,60 @@
             }
           }
         }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "dacc9d1ef6d221fbeeb3",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_medidas"
+              }
+            },
+            "Property": "receita_total"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }
