@@ -2,10 +2,10 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "b28c4661871ca93c00af",
   "position": {
-    "x": 884.44444444444446,
-    "y": 253.33333333333331,
+    "x": 884,
+    "y": 230,
     "z": 0,
-    "height": 447.77777777777777,
+    "height": 471,
     "width": 380,
     "tabOrder": 0
   },
@@ -88,26 +88,13 @@
         "sort": [
           {
             "field": {
-              "Column": {
+              "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "TopGrupos"
+                    "Entity": "_medidas"
                   }
                 },
-                "Property": "Value"
-              }
-            },
-            "direction": "Ascending"
-          },
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "produtosOutros"
-                  }
-                },
-                "Property": "d_produtos.Nome_Produto"
+                "Property": "Rank v2"
               }
             },
             "direction": "Ascending"
@@ -844,6 +831,24 @@
           },
           "selector": {
             "id": "Column"
+          }
+        },
+        {
+          "properties": {
+            "rowSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "columnSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
           }
         }
       ],

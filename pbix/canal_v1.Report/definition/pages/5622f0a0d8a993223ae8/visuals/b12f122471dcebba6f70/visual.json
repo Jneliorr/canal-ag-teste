@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "b12f122471dcebba6f70",
   "position": {
-    "x": 772.72727272727263,
-    "y": 253.63636363636363,
-    "z": 7000,
-    "height": 202.72727272727272,
-    "width": 496.36363636363632,
-    "tabOrder": 7000
+    "x": 781.81818181818176,
+    "y": 219.09090909090907,
+    "z": 3000,
+    "height": 192.72727272727272,
+    "width": 483.63636363636357,
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "scatterChart",
@@ -126,7 +126,7 @@
             "showAxisTitle": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             },

@@ -46,6 +46,9 @@ table d_calendario
 		lineageTag: 6d0b079a-6ac5-4ff1-9140-63c928ce4cb6
 		summarizeBy: none
 		sourceColumn: Nome do Mês
+		sortByColumn: Mês
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 

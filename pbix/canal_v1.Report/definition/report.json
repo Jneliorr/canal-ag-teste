@@ -69,34 +69,39 @@
       "type": "RegisteredResources",
       "items": [
         {
-          "name": "1.geral6823300263277375.png",
-          "path": "1.geral6823300263277375.png",
+          "name": "1.geral08551275769693933.png",
+          "path": "1.geral08551275769693933.png",
           "type": "Image"
         },
         {
-          "name": "2.clientes6318602771260781.png",
-          "path": "2.clientes6318602771260781.png",
+          "name": "2.clientes15714625952612138.png",
+          "path": "2.clientes15714625952612138.png",
           "type": "Image"
         },
         {
-          "name": "3.analitico34069830744705865.png",
-          "path": "3.analitico34069830744705865.png",
+          "name": "3.analitico3373224164954939.png",
+          "path": "3.analitico3373224164954939.png",
           "type": "Image"
         },
         {
-          "name": "4.mapa_calor6976512158751983.png",
-          "path": "4.mapa_calor6976512158751983.png",
+          "name": "4.mapa_calor480745153320273.png",
+          "path": "4.mapa_calor480745153320273.png",
           "type": "Image"
         },
         {
-          "name": "5.vendedores12934831909931743.png",
-          "path": "5.vendedores12934831909931743.png",
+          "name": "5.vendedores44673163592085186.png",
+          "path": "5.vendedores44673163592085186.png",
           "type": "Image"
         },
         {
           "name": "Custom20262230687610205.json",
           "path": "Custom20262230687610205.json",
           "type": "CustomTheme"
+        },
+        {
+          "name": "filtro_geral9215990442483363.png",
+          "path": "filtro_geral9215990442483363.png",
+          "type": "Image"
         }
       ]
     }

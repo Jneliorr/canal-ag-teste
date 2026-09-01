@@ -7,7 +7,7 @@
     "z": 3000,
     "height": 417.5,
     "width": 1253.75,
-    "tabOrder": 3000
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "scatterChart",
@@ -94,7 +94,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             },

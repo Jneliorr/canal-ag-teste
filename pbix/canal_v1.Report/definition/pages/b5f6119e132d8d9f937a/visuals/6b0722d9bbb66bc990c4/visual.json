@@ -3,9 +3,9 @@
   "name": "6b0722d9bbb66bc990c4",
   "position": {
     "x": 11,
-    "y": 255,
+    "y": 220,
     "z": 0,
-    "height": 453,
+    "height": 488,
     "width": 666,
     "tabOrder": 0
   },
@@ -38,12 +38,13 @@
                       "Entity": "d_clientes"
                     }
                   },
-                  "Property": "Cidade"
+                  "Property": "Cidade_corrigido"
                 }
               },
-              "queryRef": "d_clientes.Cidade",
+              "queryRef": "d_clientes.Cidade_corrigido",
               "nativeQueryRef": "Cidade",
-              "active": false
+              "active": false,
+              "displayName": "Cidade"
             },
             {
               "field": {
@@ -203,7 +204,7 @@
           },
           {
             "queryRefs": [
-              "d_clientes.Cidade"
+              "d_clientes.Cidade_corrigido"
             ],
             "isCollapsed": true,
             "identityKeys": [
@@ -214,7 +215,7 @@
                       "Entity": "d_clientes"
                     }
                   },
-                  "Property": "Cidade"
+                  "Property": "Cidade_corrigido"
                 }
               }
             ],

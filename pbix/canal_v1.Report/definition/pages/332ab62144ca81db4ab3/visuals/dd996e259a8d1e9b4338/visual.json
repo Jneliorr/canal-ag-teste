@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "dd996e259a8d1e9b4338",
   "position": {
-    "x": 950,
-    "y": 253,
-    "z": 3000,
-    "height": 453,
-    "width": 315,
-    "tabOrder": 3000
+    "x": 949.99999999999989,
+    "y": 221.81818181818181,
+    "z": 4000,
+    "height": 483.63636363636357,
+    "width": 314.5454545454545,
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -29,6 +29,22 @@
               "queryRef": "d_clientes.Estado",
               "nativeQueryRef": "Estado",
               "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "d_clientes"
+                    }
+                  },
+                  "Property": "Cidade_corrigido"
+                }
+              },
+              "queryRef": "d_clientes.Cidade_corrigido",
+              "nativeQueryRef": "Cidade",
+              "active": false,
+              "displayName": "Cidade"
             }
           ]
         },

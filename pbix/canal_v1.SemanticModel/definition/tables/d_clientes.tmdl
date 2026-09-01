@@ -33,11 +33,19 @@ table d_clientes
 
 		annotation SummarizationSetBy = Automatic
 
+	column Cidade_corrigido
+		dataType: string
+		lineageTag: e7353ea5-d3b2-4705-8354-b59af7ec6fc2
+		summarizeBy: none
+		sourceColumn: Cidade_corrigido
+
+		annotation SummarizationSetBy = Automatic
+
 	partition d_clientes = m
 		mode: import
 		source =
 				let
-				  Origem = Csv.Document(File.Contents("C:\Users\Nelio\Documents\GitHub\canal-ag-teste\data\raw\Clientes.csv"), [Delimiter = ",", Columns = 4, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				  Origem = Csv.Document(File.Contents("C:\Users\Nelio\Documents\GitHub\canal-ag-teste\data\raw\Clientes.csv"), [Delimiter = ",", Columns = 5, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
 				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Origem, [PromoteAllScalars=true]),
 				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"ID_Cliente", type text}, {"Nome_Cliente", type text}, {"Cidade", type text}, {"Estado", type text}})
 				in

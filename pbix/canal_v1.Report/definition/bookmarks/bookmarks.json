@@ -1,0 +1,55 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmarksMetadata/1.0.0/schema.json",
+  "items": [
+    {
+      "name": "6132cc89552f8278970f",
+      "displayName": "Geral",
+      "children": [
+        "dfd21e4ee7b669d51152",
+        "99b132281048b5ceba9d",
+        "11754a30d290b33e3710",
+        "e58101f326e0e3e241c1"
+      ]
+    },
+    {
+      "name": "aad3ee1334ac2dd2ae7d",
+      "displayName": "Vendedores",
+      "children": [
+        "93f9c8697a570352be19",
+        "86d5d61ef4134344cb36",
+        "1eabc6ca07e01dc6eebd",
+        "ea0391949df83f62549f"
+      ]
+    },
+    {
+      "name": "288ff367a5462837acd4",
+      "displayName": "Clientes",
+      "children": [
+        "f331a907bda6f90b75db",
+        "1a2ab5ea447d0d439692",
+        "246f9726c09280c89440",
+        "b9279e309b8f9b866c99"
+      ]
+    },
+    {
+      "name": "e93627f17795acdb9185",
+      "displayName": "Analitico",
+      "children": [
+        "60e6d31d0033bc0e5ea0",
+        "e4c408f697fd92075d8b",
+        "1dc57d63db23fb2e2747",
+        "84b277644212b9b311f2"
+      ]
+    },
+    {
+      "name": "0ed5e4d59ca2b5c4ae5c",
+      "displayName": "Mapa Calor",
+      "children": [
+        "84a8163ded80598bb6df",
+        "de6056506fba9d7d93f6",
+        "6ee48e570f437ff4a63e",
+        "fdfa9af6f1a514c8ebbe"
+      ]
+    }
+  ]
+}

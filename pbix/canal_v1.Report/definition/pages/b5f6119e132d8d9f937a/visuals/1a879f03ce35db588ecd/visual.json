@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "1a879f03ce35db588ecd",
   "position": {
-    "x": 695.55555555555554,
-    "y": 255,
+    "x": 696,
+    "y": 220,
     "z": 1000,
-    "height": 162.22222222222223,
-    "width": 574.44444444444446,
-    "tabOrder": 1000
+    "height": 187,
+    "width": 574,
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -23,12 +23,13 @@
                       "Entity": "d_clientes"
                     }
                   },
-                  "Property": "Cidade"
+                  "Property": "Cidade_corrigido"
                 }
               },
-              "queryRef": "d_clientes.Cidade",
+              "queryRef": "d_clientes.Cidade_corrigido",
               "nativeQueryRef": "Cidade",
-              "active": true
+              "active": true,
+              "displayName": "Cidade"
             }
           ]
         },
@@ -90,6 +91,19 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
                 }
               }
             }
@@ -471,7 +485,8 @@
               }
             }
           ]
-        }
+        },
+        "howCreated": "User"
       }
     ]
   }

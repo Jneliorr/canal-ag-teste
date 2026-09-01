@@ -1,51 +1,51 @@
-ID_Cliente,Nome_Cliente,Cidade,Estado
-C001,Enzo Azevedo,Nunes Paulista,AP
-C002,Miguel Lopes,Sales,MG
-C003,Laís da Conceição,Cunha de Goiás,SC
-C004,Maria Alice Ferreira,Nunes da Praia,ES
-C005,Luiz Gustavo Sales,Barros,AM
-C006,Pedro Lucas da Cruz,Campos das Flores,MG
-C007,Letícia Souza,Vieira do Sul,RO
-C008,Srta. Nina Teixeira,Mendes do Campo,MA
-C009,Bruna Ramos,Ferreira,PE
-C010,Luiz Fernando Cavalcanti,Santos do Oeste,BA
-C011,Sr. Marcelo Souza,Martins,PR
-C012,Carlos Eduardo Moreira,Duarte do Norte,ES
-C013,Ana Júlia Cardoso,Campos de Teixeira,SP
-C014,Cauê Ribeiro,Ferreira,PE
-C015,Lara da Rosa,Lima,MG
-C016,Milena Moura,Silveira de Porto,AM
-C017,Enzo Gabriel Campos,Aragão Verde,PI
-C018,Nicolas das Neves,Cardoso,RR
-C019,Ana Carolina Dias,Azevedo,MT
-C020,Luiz Gustavo Duarte,Rodrigues do Oeste,PI
-C021,Thiago Ribeiro,Ribeiro,SE
-C022,Caroline Castro,Pinto,MS
-C023,Júlia Rezende,Castro,AL
-C024,Sabrina Mendes,Farias,DF
-C025,Luiz Otávio Porto,Pereira,CE
-C026,Lucas Gabriel Farias,Pires,SE
-C027,Ana Luiza Barros,Carvalho,SP
-C028,Davi Luiz Oliveira,Rocha de da Rosa,MG
-C029,Davi Luiz Nascimento,Nogueira,GO
-C030,Esther Pereira,da Costa de da Mota,MA
-C031,Benício Viana,Lopes,AL
-C032,Nathan Rocha,Caldeira,PE
-C033,Diego Campos,Duarte,MG
-C034,Miguel Farias,Cardoso,PA
-C035,Maria Luiza Silveira,Ferreira do Oeste,RO
-C036,Sra. Eduarda Ferreira,Costela da Mata,PB
-C037,Sr. André Ramos,Cardoso,PI
-C038,Luiz Fernando Ferreira,Monteiro,AP
-C039,João Lucas Gomes,Pires,TO
-C040,Rafaela Jesus,Vieira,MA
-C041,Ana Lívia Cunha,Correia do Campo,SC
-C042,Brenda Fogaça,da Rocha Alegre,DF
-C043,Maysa Ferreira,Fernandes de Barros,AP
-C044,Lara Freitas,Almeida,MT
-C045,Pedro Miguel Ferreira,Pires,PI
-C046,Sra. Maria Eduarda Alves,Cardoso,RR
-C047,Marcelo Azevedo,Vieira Grande,PA
-C048,Augusto Lima,Barbosa da Praia,DF
-C049,Elisa Cavalcanti,Oliveira Grande,ES
-C050,Davi Oliveira,da Luz,SC
+Estado,Cidade_corrigido,ID_Cliente,Nome_Cliente,Cidade
+AL,Maceió,C023,Júlia Rezende,Castro
+AL,Maceió,C031,Benício Viana,Lopes
+AP,Macapá,C001,Enzo Azevedo,Nunes Paulista
+AP,Macapá,C038,Luiz Fernando Ferreira,Monteiro
+AP,Macapá,C043,Maysa Ferreira,Fernandes de Barros
+AM,Manaus,C005,Luiz Gustavo Sales,Barros
+AM,Manaus,C016,Milena Moura,Silveira de Porto
+BA,Salvador,C010,Luiz Fernando Cavalcanti,Santos do Oeste
+CE,Fortaleza,C025,Luiz Otávio Porto,Pereira
+DF,Brasília,C024,Sabrina Mendes,Farias
+DF,Brasília,C042,Brenda Fogaça,da Rocha Alegre
+DF,Brasília,C048,Augusto Lima,Barbosa da Praia
+ES,Vitória,C004,Maria Alice Ferreira,Nunes da Praia
+ES,Vitória,C012,Carlos Eduardo Moreira,Duarte do Norte
+ES,Vitória,C049,Elisa Cavalcanti,Oliveira Grande
+GO,Goiânia,C029,Davi Luiz Nascimento,Nogueira
+MA,São Luís,C008,Srta. Nina Teixeira,Mendes do Campo
+MA,São Luís,C030,Esther Pereira,da Costa de da Mota
+MA,São Luís,C040,Rafaela Jesus,Vieira
+MT,Cuiabá,C019,Ana Carolina Dias,Azevedo
+MT,Cuiabá,C044,Lara Freitas,Almeida
+MS,Campo Grande,C022,Caroline Castro,Pinto
+MG,Belo Horizonte,C002,Miguel Lopes,Sales
+MG,Belo Horizonte,C006,Pedro Lucas da Cruz,Campos das Flores
+MG,Belo Horizonte,C015,Lara da Rosa,Lima
+MG,Belo Horizonte,C028,Davi Luiz Oliveira,Rocha de da Rosa
+MG,Belo Horizonte,C033,Diego Campos,Duarte
+PA,Belém,C034,Miguel Farias,Cardoso
+PA,Belém,C047,Marcelo Azevedo,Vieira Grande
+PB,João Pessoa,C036,Sra. Eduarda Ferreira,Costela da Mata
+PR,Curitiba,C011,Sr. Marcelo Souza,Martins
+PE,Recife,C009,Bruna Ramos,Ferreira
+PE,Recife,C014,Cauê Ribeiro,Ferreira
+PE,Recife,C032,Nathan Rocha,Caldeira
+PI,Teresina,C017,Enzo Gabriel Campos,Aragão Verde
+PI,Teresina,C020,Luiz Gustavo Duarte,Rodrigues do Oeste
+PI,Teresina,C037,Sr. André Ramos,Cardoso
+PI,Teresina,C045,Pedro Miguel Ferreira,Pires
+RO,Porto Velho,C007,Letícia Souza,Vieira do Sul
+RO,Porto Velho,C035,Maria Luiza Silveira,Ferreira do Oeste
+RR,Boa Vista,C018,Nicolas das Neves,Cardoso
+RR,Boa Vista,C046,Sra. Maria Eduarda Alves,Cardoso
+SC,Florianópolis,C003,Laís da Conceição,Cunha de Goiás
+SC,Florianópolis,C041,Ana Lívia Cunha,Correia do Campo
+SC,Florianópolis,C050,Davi Oliveira,da Luz
+SP,São Paulo,C013,Ana Júlia Cardoso,Campos de Teixeira
+SP,São Paulo,C027,Ana Luiza Barros,Carvalho
+SE,Aracaju,C021,Thiago Ribeiro,Ribeiro
+SE,Aracaju,C026,Lucas Gabriel Farias,Pires
+TO,Palmas,C039,João Lucas Gomes,Pires

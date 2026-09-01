@@ -3,9 +3,9 @@
   "name": "64aec008d5f71e4f45d0",
   "position": {
     "x": 13,
-    "y": 253,
-    "z": 0,
-    "height": 231,
+    "y": 222,
+    "z": 1000,
+    "height": 215,
     "width": 913,
     "tabOrder": 0
   },
@@ -96,9 +96,6 @@
               "active": false
             }
           ]
-        },
-        "Series": {
-          "projections": []
         },
         "Y": {
           "projections": [
@@ -328,23 +325,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "dacc9d1ef6d221fbeeb3",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_medidas"
-              }
-            },
-            "Property": "receita_total"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

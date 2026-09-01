@@ -3244,17 +3244,224 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
-			    "d_orçamentario_n3.descricao3": {
+			    "d_calendario.DataId_hierarquia.mes_abreviado": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "d_Orçamentario N3",
-			          "ConceptualProperty": "Descricao3"
+			          "ConceptualEntity": "d_calendario",
+			          "Hierarchy": "DataId Hierarquia",
+			          "HierarchyLevel": "Mes Abreviado"
 			        }
 			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "Elemento Nível 3": {
+			          "mes abreviado": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "me abreviado": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.78
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "d_calendario.DataId_hierarquia.ano": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "d_calendario",
+			          "Hierarchy": "DataId Hierarquia",
+			          "HierarchyLevel": "Ano"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ano": {
+			            "State": "Generated"
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "d_calendario.DataId_hierarquia.data_id": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "d_calendario",
+			          "Hierarchy": "DataId Hierarquia",
+			          "HierarchyLevel": "DataId"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "data id": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "DataId": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "data identification": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "data identity": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "data identifier": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "data credential": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "information id": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "fact id": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "info id": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "statistic id": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "document id": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "figure id": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "d_calendario.DataId_hierarquia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "d_calendario",
+			          "Hierarchy": "DataId Hierarquia"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "DataId hierarquia": {
+			            "State": "Generated"
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "d_cliente.cidade_corrigido": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "d_clientes",
+			          "ConceptualProperty": "Cidade_corrigido"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "cidade corrigido": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Cidade_corrigido": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "Cidade": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Cidad": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -3265,92 +3472,209 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
-			    "table00_medidas_receita.arrecadado_ano_atual_total": {
+			    "d_calendario.DataId_hierarquia.nome_do_dia": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "00_Medidas_Receita",
-			          "ConceptualProperty": "ARRECADADO ANO ATUAL TOTAL"
+			          "ConceptualEntity": "d_calendario",
+			          "Hierarchy": "DataId Hierarquia",
+			          "HierarchyLevel": "Nome do Dia"
 			        }
 			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "2026": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
+			          "nome do dia": {
+			            "State": "Generated"
 			          }
 			        }
-			      ]
+			      ],
+			      "SemanticType": "Time"
 			    },
-			    "table00_medidas_receita.arrecadado_ano_anterior_periodo_atual": {
+			    "d_calendario.DataId_hierarquia.dia": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "00_Medidas_Receita",
-			          "ConceptualProperty": "ARRECADADO ANO ANTERIOR PERIODO ATUAL"
+			          "ConceptualEntity": "d_calendario",
+			          "Hierarchy": "DataId Hierarquia",
+			          "HierarchyLevel": "Dia"
 			        }
 			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "2025": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
+			          "dia": {
+			            "State": "Generated"
 			          }
 			        }
-			      ]
-			    },
-			    "table00_medidas_receita.var_anual_receita": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "00_Medidas_Receita",
-			          "ConceptualProperty": "VAR_ANUAL_RECEITA"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "%": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
-			        }
-			      ]
-			    },
-			    "table00_medidas_orcamento.orcamento_ano_atual_receita": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "00_Medidas_Orcamento",
-			          "ConceptualProperty": "Orcamento Ano Atual Receita"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "Orçado 2026": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
-			        }
-			      ]
+			      ],
+			      "SemanticType": "Time"
 			    }
 			  },
 			  "Relationships": {
+			    "d_calendario_DataId_hierarquia_has_dia": {
+			      "Binding": {
+			        "ConceptualEntity": "d_calendario"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "d_calendario.DataId_hierarquia": {
+			          "Target": {
+			            "Entity": "d_calendario.DataId_hierarquia"
+			          }
+			        },
+			        "d_calendario.DataId_hierarquia.dia": {
+			          "Target": {
+			            "Entity": "d_calendario.DataId_hierarquia.dia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "d_calendario.DataId_hierarquia"
+			            },
+			            "Object": {
+			              "Role": "d_calendario.DataId_hierarquia.dia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "DataId_hierarquias_have_dias"
+			        }
+			      ]
+			    },
+			    "d_calendario_DataId_hierarquia_has_nome_do_dia": {
+			      "Binding": {
+			        "ConceptualEntity": "d_calendario"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "d_calendario.DataId_hierarquia": {
+			          "Target": {
+			            "Entity": "d_calendario.DataId_hierarquia"
+			          }
+			        },
+			        "d_calendario.DataId_hierarquia.nome_do_dia": {
+			          "Target": {
+			            "Entity": "d_calendario.DataId_hierarquia.nome_do_dia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "d_calendario.DataId_hierarquia"
+			            },
+			            "Object": {
+			              "Role": "d_calendario.DataId_hierarquia.nome_do_dia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "DataId_hierarquias_have_nome_do_dias"
+			        }
+			      ]
+			    },
+			    "d_calendario_DataId_hierarquia_has_mes_abreviado": {
+			      "Binding": {
+			        "ConceptualEntity": "d_calendario"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "d_calendario.DataId_hierarquia": {
+			          "Target": {
+			            "Entity": "d_calendario.DataId_hierarquia"
+			          }
+			        },
+			        "d_calendario.DataId_hierarquia.mes_abreviado": {
+			          "Target": {
+			            "Entity": "d_calendario.DataId_hierarquia.mes_abreviado"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "d_calendario.DataId_hierarquia"
+			            },
+			            "Object": {
+			              "Role": "d_calendario.DataId_hierarquia.mes_abreviado"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "DataId_hierarquias_have_mes_abreviados"
+			        }
+			      ]
+			    },
+			    "d_calendario_DataId_hierarquia_has_ano": {
+			      "Binding": {
+			        "ConceptualEntity": "d_calendario"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "d_calendario.DataId_hierarquia": {
+			          "Target": {
+			            "Entity": "d_calendario.DataId_hierarquia"
+			          }
+			        },
+			        "d_calendario.DataId_hierarquia.ano": {
+			          "Target": {
+			            "Entity": "d_calendario.DataId_hierarquia.ano"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "d_calendario.DataId_hierarquia"
+			            },
+			            "Object": {
+			              "Role": "d_calendario.DataId_hierarquia.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "DataId_hierarquias_have_anos"
+			        }
+			      ]
+			    },
+			    "d_calendario_DataId_hierarquia_has_data_id": {
+			      "Binding": {
+			        "ConceptualEntity": "d_calendario"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "d_calendario.DataId_hierarquia": {
+			          "Target": {
+			            "Entity": "d_calendario.DataId_hierarquia"
+			          }
+			        },
+			        "d_calendario.DataId_hierarquia.data_id": {
+			          "Target": {
+			            "Entity": "d_calendario.DataId_hierarquia.data_id"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "d_calendario.DataId_hierarquia"
+			            },
+			            "Object": {
+			              "Role": "d_calendario.DataId_hierarquia.data_id"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "DataId_hierarquias_have_data_ids"
+			        }
+			      ]
+			    },
 			    "f_venda_has_produtos_outro": {
 			      "Binding": {
 			        "ConceptualEntity": "f_vendas"
@@ -3588,6 +3912,72 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
+			    "d_cliente_has_cidade_corrigido": {
+			      "Binding": {
+			        "ConceptualEntity": "d_clientes"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "d_cliente": {
+			          "Target": {
+			            "Entity": "d_cliente"
+			          }
+			        },
+			        "d_cliente.cidade_corrigido": {
+			          "Target": {
+			            "Entity": "d_cliente.cidade_corrigido"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "d_cliente"
+			            },
+			            "Object": {
+			              "Role": "d_cliente.cidade_corrigido"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "d_clientes_have_cidade_corrigidos"
+			        }
+			      ]
+			    },
+			    "d_calendario_has_DataId_hierarquia": {
+			      "Binding": {
+			        "ConceptualEntity": "d_calendario"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "d_calendario": {
+			          "Target": {
+			            "Entity": "d_calendario"
+			          }
+			        },
+			        "d_calendario.DataId_hierarquia": {
+			          "Target": {
+			            "Entity": "d_calendario.DataId_hierarquia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "d_calendario"
+			            },
+			            "Object": {
+			              "Role": "d_calendario.DataId_hierarquia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "d_calendarios_have_DataId_hierarquias"
+			        }
+			      ]
+			    },
 			    "f_venda_has_entity__medida_receita_acumulada_mes_anterior": {
 			      "Binding": {
 			        "ConceptualEntity": "f_vendas"
@@ -3720,6 +4110,39 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
+			    "d_calendario_has_html_card_valor_receita_total_card": {
+			      "Binding": {
+			        "ConceptualEntity": "d_calendario"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "d_calendario": {
+			          "Target": {
+			            "Entity": "d_calendario"
+			          }
+			        },
+			        "html_card.valor_receita_total_card": {
+			          "Target": {
+			            "Entity": "html_card.valor_receita_total_card"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "d_calendario"
+			            },
+			            "Object": {
+			              "Role": "html_card.valor_receita_total_card"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "d_calendarios_have_valor_receita_total_card"
+			        }
+			      ]
+			    },
 			    "f_venda_has_html_card_qtd_vendas_card": {
 			      "Binding": {
 			        "ConceptualEntity": "f_vendas"
@@ -3750,6 +4173,39 @@ cultureInfo pt-BR
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "f_venda_have_qtd_vendas_card"
+			        }
+			      ]
+			    },
+			    "d_calendario_has_html_card_qtd_vendas_card": {
+			      "Binding": {
+			        "ConceptualEntity": "d_calendario"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "d_calendario": {
+			          "Target": {
+			            "Entity": "d_calendario"
+			          }
+			        },
+			        "html_card.qtd_vendas_card": {
+			          "Target": {
+			            "Entity": "html_card.qtd_vendas_card"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "d_calendario"
+			            },
+			            "Object": {
+			              "Role": "html_card.qtd_vendas_card"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "d_calendarios_have_qtd_vendas_card"
 			        }
 			      ]
 			    },
@@ -3786,6 +4242,39 @@ cultureInfo pt-BR
 			        }
 			      ]
 			    },
+			    "d_calendario_has_html_card_qtd_itens_vendidos_card": {
+			      "Binding": {
+			        "ConceptualEntity": "d_calendario"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "d_calendario": {
+			          "Target": {
+			            "Entity": "d_calendario"
+			          }
+			        },
+			        "html_card.qtd_itens_vendidos_card": {
+			          "Target": {
+			            "Entity": "html_card.qtd_itens_vendidos_card"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "d_calendario"
+			            },
+			            "Object": {
+			              "Role": "html_card.qtd_itens_vendidos_card"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "d_calendarios_have_qtd_itens_vendidos_card"
+			        }
+			      ]
+			    },
 			    "f_venda_has_html_card_qtd_clientes_card": {
 			      "Binding": {
 			        "ConceptualEntity": "f_vendas"
@@ -3816,6 +4305,39 @@ cultureInfo pt-BR
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "f_venda_have_qtd_clientes_card"
+			        }
+			      ]
+			    },
+			    "d_calendario_has_html_card_qtd_clientes_card": {
+			      "Binding": {
+			        "ConceptualEntity": "d_calendario"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "d_calendario": {
+			          "Target": {
+			            "Entity": "d_calendario"
+			          }
+			        },
+			        "html_card.qtd_clientes_card": {
+			          "Target": {
+			            "Entity": "html_card.qtd_clientes_card"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "d_calendario"
+			            },
+			            "Object": {
+			              "Role": "html_card.qtd_clientes_card"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "d_calendarios_have_qtd_clientes_card"
 			        }
 			      ]
 			    },

@@ -3,11 +3,11 @@
   "name": "db76882293bd8a75dc8e",
   "position": {
     "x": 696,
-    "y": 470,
-    "z": 6000,
-    "height": 238,
+    "y": 455,
+    "z": 2000,
+    "height": 253,
     "width": 574,
-    "tabOrder": 6000
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "scatterChart",
@@ -28,7 +28,23 @@
               },
               "queryRef": "d_clientes.Estado",
               "nativeQueryRef": "Estado",
-              "active": true
+              "active": false
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "d_clientes"
+                    }
+                  },
+                  "Property": "Cidade_corrigido"
+                }
+              },
+              "queryRef": "d_clientes.Cidade_corrigido",
+              "nativeQueryRef": "Cidad",
+              "active": true,
+              "displayName": "Cidad"
             }
           ]
         },
@@ -46,8 +62,9 @@
                 }
               },
               "queryRef": "_medidas.qtd_clientes",
-              "nativeQueryRef": "qtd_clientes",
-              "active": true
+              "nativeQueryRef": "Qtd. Clientes",
+              "active": true,
+              "displayName": "Qtd. Clientes"
             }
           ]
         },
@@ -65,7 +82,8 @@
                 }
               },
               "queryRef": "_medidas.receita_total",
-              "nativeQueryRef": "receita_total"
+              "nativeQueryRef": "Receita Total",
+              "displayName": "Receita Total"
             }
           ]
         }
@@ -78,7 +96,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             },
