@@ -14,7 +14,7 @@
               "name": {
                 "expr": {
                   "Literal": {
-                    "Value": "'Geral.png'"
+                    "Value": "'1.geral.png'"
                   }
                 }
               },
@@ -23,7 +23,7 @@
                   "ResourcePackageItem": {
                     "PackageName": "RegisteredResources",
                     "PackageType": 1,
-                    "ItemName": "Geral023171236519643035.png"
+                    "ItemName": "1.geral6823300263277375.png"
                   }
                 }
               },

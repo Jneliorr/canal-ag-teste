@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "64aec008d5f71e4f45d0",
   "position": {
-    "x": 13.466334164588527,
-    "y": 245.98503740648377,
+    "x": 13,
+    "y": 253,
     "z": 0,
-    "height": 244.18952618453864,
-    "width": 913.0174563591022,
+    "height": 231,
+    "width": 913,
     "tabOrder": 0
   },
   "visual": {
@@ -97,8 +97,9 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#552CF3'"
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0
                     }
                   }
                 }
@@ -140,6 +141,20 @@
                       "Value": "'#F32A2A'"
                     }
                   }
+                }
+              }
+            },
+            "strokeTransparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "strokeWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
                 }
               }
             }
@@ -228,65 +243,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "0eafa09671b5a6b9174c",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "d_calendario"
-              }
-            },
-            "Property": "DataId"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "42668c3c677a54f72ba9",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "d_calendario"
-              }
-            },
-            "Property": "DataId"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "c36b9efef8dd6127842d",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "d_calendario"
-              }
-            },
-            "Property": "DataId"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "a5fdd8a80fa1b481a995",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_medidas"
-              }
-            },
-            "Property": "receita_total"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

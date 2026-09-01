@@ -1,8 +1,10 @@
 table d_calendario
 	lineageTag: bc2d81b6-0ace-48d4-8f76-a2c1bb5984c2
+	dataCategory: Time
 
 	column DataId
 		dataType: dateTime
+		isKey
 		formatString: Long Date
 		lineageTag: cb48b404-1bb6-4c17-9750-1fd3825d2d98
 		summarizeBy: none
@@ -84,6 +86,9 @@ table d_calendario
 		lineageTag: eaeaf78e-45a0-4973-bf9a-82a747d08149
 		summarizeBy: none
 		sourceColumn: Nome dia abreviado
+		sortByColumn: 'Nome dia num'
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 
@@ -110,6 +115,9 @@ table d_calendario
 		lineageTag: dc3ff431-fe71-47a5-8476-a27fbd027b74
 		summarizeBy: none
 		sourceColumn: Mes Abreviado
+		sortByColumn: Mês
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 

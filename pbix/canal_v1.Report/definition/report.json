@@ -69,14 +69,34 @@
       "type": "RegisteredResources",
       "items": [
         {
+          "name": "1.geral6823300263277375.png",
+          "path": "1.geral6823300263277375.png",
+          "type": "Image"
+        },
+        {
+          "name": "2.clientes6318602771260781.png",
+          "path": "2.clientes6318602771260781.png",
+          "type": "Image"
+        },
+        {
+          "name": "3.analitico34069830744705865.png",
+          "path": "3.analitico34069830744705865.png",
+          "type": "Image"
+        },
+        {
+          "name": "4.mapa_calor6976512158751983.png",
+          "path": "4.mapa_calor6976512158751983.png",
+          "type": "Image"
+        },
+        {
+          "name": "5.vendedores12934831909931743.png",
+          "path": "5.vendedores12934831909931743.png",
+          "type": "Image"
+        },
+        {
           "name": "Custom20262230687610205.json",
           "path": "Custom20262230687610205.json",
           "type": "CustomTheme"
-        },
-        {
-          "name": "Geral023171236519643035.png",
-          "path": "Geral023171236519643035.png",
-          "type": "Image"
         }
       ]
     }

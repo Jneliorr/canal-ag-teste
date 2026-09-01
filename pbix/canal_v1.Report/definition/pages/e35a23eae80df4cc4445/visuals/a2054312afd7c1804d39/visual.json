@@ -2,16 +2,15 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "a2054312afd7c1804d39",
   "position": {
-    "x": 1165,
-    "y": 55,
-    "z": 3000,
-    "height": 911.66666666666674,
-    "width": 731.66666666666674,
-    "tabOrder": 3000
+    "x": 525,
+    "y": 472,
+    "z": 2000,
+    "height": 233,
+    "width": 744,
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "clusteredBarChart",
-    "autoSelectVisualType": true,
     "query": {
       "queryState": {
         "Category": {
@@ -43,11 +42,12 @@
                       "Entity": "_medidas"
                     }
                   },
-                  "Property": "receita_ano_anterior"
+                  "Property": "receita_total"
                 }
               },
-              "queryRef": "_medidas.receita_ano_anterior",
-              "nativeQueryRef": "receita_ano_anterior"
+              "queryRef": "_medidas.receita_total",
+              "nativeQueryRef": "Mês Atual",
+              "displayName": "Mês Atual"
             },
             {
               "field": {
@@ -57,11 +57,12 @@
                       "Entity": "_medidas"
                     }
                   },
-                  "Property": "receita_total"
+                  "Property": "receita_mes_anterior_dia"
                 }
               },
-              "queryRef": "_medidas.receita_total",
-              "nativeQueryRef": "receita_total"
+              "queryRef": "_medidas.receita_mes_anterior_dia",
+              "nativeQueryRef": "Mês Anterior",
+              "displayName": "Mês Anterior"
             }
           ]
         }
@@ -76,13 +77,136 @@
                     "Entity": "_medidas"
                   }
                 },
-                "Property": "receita_ano_anterior"
+                "Property": "receita_total"
               }
             },
             "direction": "Descending"
           }
-        ]
+        ],
+        "isDefaultSort": true
       }
+    },
+    "objects": {
+      "dataPoint": [
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#8D6A9F'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_medidas.receita_mes_anterior_dia"
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#8CBCB9'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_medidas.receita_total"
+          }
+        }
+      ],
+      "legend": [
+        {
+          "properties": {
+            "showGradientLegend": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "roundRange": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "gridlineShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "drillFilterOtherVisuals": true
   }
