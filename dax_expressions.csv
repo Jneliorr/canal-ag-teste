@@ -1,0 +1,511 @@
+﻿Name;Table;Type;Has_error;Best_practices_violations;Source;Source_type;Lineage_tag;Display_folder;Description;Expression
+Calendario Vendas;_medidas;Measure;False;2;canal_v1;Semantic model;cdb612ca-67e8-4d53-a7c2-e44eefd05a19;;;"
+ VAR vDia = 
+    SELECTEDVALUE(d_calendario[DataId])
+
+VAR vTotalVendas = 
+[qtd_itens_vendidos]
+
+RETURN
+[receita_total]"
+variacao_qtd_vendas_mom_%;_medidas;Measure;False;0;canal_v1;Semantic model;3f5a4a65-dc9c-4558-8987-998060195912;;;"
+VAR _diff = [dif_qtd_vendas_mom]
+VAR _anterior = [qtd_vendas_mes_anterior]
+RETURN
+DIVIDE(
+    _diff,
+    _anterior,
+    BLANK()
+)"
+receita_total;_medidas;Measure;False;0;canal_v1;Semantic model;ddd3f00f-948e-4960-8d11-36560b704ee9;;;"
+SUMX(f_vendas, f_vendas[Quantidade] * f_vendas[Valor_Unitario])"
+dif_qtd_vendas_mom;_medidas;Measure;False;0;canal_v1;Semantic model;7c09f6c3-8105-4d3b-8a9c-cf9e073260bb;;;"
+VAR _atual = [qtd_vendas]
+VAR _anterior = [qtd_vendas_mes_anterior]
+RETURN
+IF(
+    NOT ISBLANK(_anterior) && NOT ISBLANK(_atual),
+    _atual - _anterior,
+    BLANK()
+)"
+qtd_itens_vendidos;_medidas;Measure;False;0;canal_v1;Semantic model;7c4d7185-f014-4b41-9ff8-1fa9713eed96;;;"
+SUM(f_vendas[Quantidade])
+"
+qtd_itens_mes_anterior;_medidas;Measure;False;0;canal_v1;Semantic model;b9ae5cf5-32ef-4de2-ae4e-ce81ed307826;;;"
+CALCULATE(
+    [qtd_itens_vendidos], 
+    PREVIOUSMONTH(d_calendario[DataId])
+)"
+itens_por_venda;_medidas;Measure;False;0;canal_v1;Semantic model;6f9b4ae8-c3e0-4a2e-beb2-8469d296a57e;;;"
+DIVIDE(
+    [qtd_itens_vendidos], 
+    [qtd_vendas], 
+    0
+)"
+qtd_produtos_vendidos;_medidas;Measure;False;0;canal_v1;Semantic model;4e72f00a-515f-4bff-a3ec-8712d2a31dc4;;;"
+DISTINCTCOUNT(f_vendas[ID_Produto])"
+preco_medio_unitario;_medidas;Measure;False;0;canal_v1;Semantic model;e219e478-6b37-49fb-b72c-b6c46edb9f95;;;"
+DIVIDE(
+    [receita_total], 
+    [qtd_itens_vendidos], 
+    0
+)"
+variacao_itens_mom_%;_medidas;Measure;False;0;canal_v1;Semantic model;7aa40956-8a6e-4486-9478-8784d8f92d39;;;"
+DIVIDE(
+    [qtd_itens_vendidos] - [qtd_itens_mes_anterior],
+    [qtd_itens_mes_anterior],
+    BLANK()
+)"
+vendas%;_medidas;Measure;False;0;canal_v1;Semantic model;8cc1b2b9-649f-407e-9517-296349124e5e;;;"
+VAR porcentagem_venda = 
+CALCULATE(
+    [receita_total],
+        ALL(f_vendas)
+)
+return
+DIVIDE( [receita_total], porcentagem_venda)"
+qtd_clientes_mes_anterior;_medidas;Measure;False;0;canal_v1;Semantic model;7a2f4b29-632b-44a5-8e97-890f1b253c90;;;"
+CALCULATE(
+    [qtd_clientes],
+    PREVIOUSMONTH(d_calendario[DataId])
+)"
+dif_qtd_clientes_mom;_medidas;Measure;False;0;canal_v1;Semantic model;d5c07ddb-4c0f-4940-8c72-734eb930dfdc;;;"
+VAR _atual = [qtd_clientes]
+VAR _anterior = [qtd_clientes_mes_anterior]
+RETURN
+IF(
+    NOT ISBLANK(_anterior) && NOT ISBLANK(_atual),
+    _atual - _anterior,
+    BLANK()
+)"
+receita_ano_anterior;_medidas;Measure;False;0;canal_v1;Semantic model;99e24968-cc47-4fc9-9dd9-d906979f035c;;;"
+    CALCULATE([receita_total],
+        SAMEPERIODLASTYEAR(d_calendario[DataId]))"
+variacao_pedidos_mom_%;_medidas;Measure;False;0;canal_v1;Semantic model;f7ec3e80-18c8-4637-9cbe-ce9464e3bb8f;;;"
+DIVIDE(
+    [qtd_vendas] - [qtd_vendas_mes_anterior],
+    [qtd_vendas_mes_anterior],
+    BLANK()
+)"
+Faturamento TopN2;_medidas;Measure;False;0;canal_v1;Semantic model;9ceb0d51-21c4-4e0a-adaa-bfd27acb138d;;;"
+
+VAR vQtdTopn = [Valor TopN]
+VAR vTopn = 
+TOPN(
+    vQtdTopn,
+    ALL(produtosOutros),
+    [receita_total]
+)
+VAR vFaturmamentoTop = 
+CALCULATE(
+    [receita_total],
+   KEEPFILTERS( vTopn )
+)
+
+VAR vOutros = 
+EXCEPT(ALL(produtosOutros),vTopn)
+
+
+VAR vFatOutros = 
+CALCULATE(
+    [receita_total],
+   KEEPFILTERS( vOutros)
+)
+return
+IF(
+    SELECTEDVALUE(TopGrupos[Value]) = ""Demais Produtos"", vFatOutros,vFaturmamentoTop)"
+qtd_clientes;_medidas;Measure;False;0;canal_v1;Semantic model;9b7074bf-3f25-458d-92da-2aff7c660c84;;;"
+DISTINCTCOUNT(f_vendas[ID_Cliente])"
+ticket_medio;_medidas;Measure;False;0;canal_v1;Semantic model;7628945a-b7c5-404a-8090-bc98c9ae3486;;;"
+DIVIDE(
+    [receita_total], 
+    [qtd_vendas], 
+    0
+)
+"
+variacao_receita_mom_%;_medidas;Measure;False;0;canal_v1;Semantic model;a888efc3-60a8-471a-8c65-0b925df8b9f9;;;"
+VAR diff = [dif_receita_mom]
+VAR mes_ant = [receita_mes_anterior]
+RETURN
+DIVIDE(diff, mes_ant, BLANK())"
+Rank v2;_medidas;Measure;False;0;canal_v1;Semantic model;0c8d4e0d-08af-4122-bbf5-4625e8975e9d;;;"
+VAR vTopN = 'TopN'[Valor TopN]
+VAR VRank = RANKX(
+    ALL(
+        produtosOutros),
+        [receita_total]
+)
+
+RETURN
+IF(
+    ISINSCOPE(produtosOutros[d_produtos.Nome_Produto]),
+    IF(
+(SELECTEDVALUE(TopGrupos[Value]) = ""Top Produtos"" && VRank <= vTopN) ||
+(SELECTEDVALUE(TopGrupos[Value]) = ""Demais Produtos"" && VRank > vTopN),
+    VRank
+),
+IF(
+    SELECTEDVALUE(TopGrupos[Value]) = ""Top Produtos"",
+    1,
+    2
+)
+)"
+dif_receita_mom;_medidas;Measure;False;0;canal_v1;Semantic model;67cd404d-8837-492d-8765-b72f166b5c1d;;;"
+VAR mes_atual = [receita_total]
+VAR mes_ant = [receita_mes_anterior]
+RETURN
+IF(
+    NOT ISBLANK(mes_ant) && NOT ISBLANK(mes_atual),
+    mes_atual - mes_ant,
+    BLANK()
+)"
+receita_mes_anterior;_medidas;Measure;False;0;canal_v1;Semantic model;8f4c5374-9749-427e-ac35-d98867aec677;;;"
+CALCULATE(
+    [receita_total], 
+    PREVIOUSMONTH(d_calendario[DataId])
+)"
+qtd_vendas;_medidas;Measure;False;0;canal_v1;Semantic model;9ca6514b-c9dc-49bc-a1ac-9af416780fe7;;;"
+COUNTROWS(f_vendas)"
+qtd_vendas_mes_anterior;_medidas;Measure;False;0;canal_v1;Semantic model;8b0a63e7-1903-41e9-af11-5068916094c5;;;"
+CALCULATE(
+    [qtd_vendas], 
+    PREVIOUSMONTH(d_calendario[DataId])
+)"
+variacao_qtd_clientes_mom_%;_medidas;Measure;False;0;canal_v1;Semantic model;f8b649e4-2da7-40b0-b648-6d58285df7a0;;;"
+VAR _diff = [dif_qtd_clientes_mom]
+VAR _anterior = [qtd_clientes_mes_anterior]
+RETURN
+DIVIDE(
+    _diff,
+    _anterior,
+    BLANK()
+)"
+TopGrupos;;Calculated Table;N/A;0;canal_v1;Semantic model;81c8ebe6-5a9c-4f3a-b222-864c89c0f511;;;"
+{""Top Produtos"",""Demais Produtos""}"
+qtd_clientes_card;_html_cards;Measure;False;0;canal_v1;Semantic model;c02e1002-7c7f-4ef3-93b3-e041d7efce08;;;"
+
+
+VAR ValorAtual = [qtd_clientes]
+VAR ValorPrincipalFormatado = FORMAT(ValorAtual, ""#,##0"")
+VAR PercValue = [variacao_qtd_clientes_mom_%]
+VAR PercentualFormatado = FORMAT(PercValue, ""+0.00%;-0.00%;0.00%"")
+-- Cores dinâmicas baseadas no percentual
+VAR CorSucesso = ""#166534"" -- Verde escuro
+VAR CorErro = ""#991b1b""    -- Vermelho escuro
+VAR CorBorda = ""#552CF3""
+VAR CorBackground = IF(PercValue >= 0, ""#f0fdf4"", ""#fef2f2"")
+VAR CorTexto = IF(PercValue >= 0, CorSucesso, CorErro)
+VAR Titulo = ""Clientes""
+
+RETURN
+
+""
+<div style='
+    font-family: Segoe UI, sans-serif;
+    background-color: #ffffff;
+    border: 2px solid "" & CorBorda & "";
+    border-radius: 16px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    height: 100%;
+    box-sizing: border-box;
+'>
+    <!-- Bloco do Ícone -->
+    <div style='
+        background-color: #f1f5f9;
+        padding: 8px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    '>
+        <svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='#3b82f6' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'>
+            <path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'></path>
+            <circle cx='9' cy='7' r='4'></circle>
+            <path d='M23 21v-2a4 4 0 0 0-3-3.87'></path>
+            <path d='M16 3.13a4 4 0 0 1 0 7.75'></path>
+        </svg>
+    </div>
+
+    <!-- Conteúdo de Texto -->
+    <div style='display: flex; flex-direction: column; align-items: flex-start; gap: 2px;'>
+        <div style='
+            color: #64748b;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        '>"" & Titulo & ""</div>
+        
+        <div style='
+            color: #0f172a;
+            font-size: 18px;
+            font-weight: 800;
+            line-height: 1.1;
+        '>"" & ValorPrincipalFormatado & ""</div>
+        
+        <!-- Badge Percentual (Abaixo do valor) -->
+        <div style='
+            background-color: "" & CorBackground & "";
+            color: "" & CorTexto & "";
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 700;
+            margin-top: 2px;
+            display: inline-block;
+        '>"" & PercentualFormatado & ""</div>
+    </div>
+</div>
+"""
+qtd_itens_vendidos_card;_html_cards;Measure;False;0;canal_v1;Semantic model;f5cdc465-206c-477d-943b-9537556f3ade;;;"
+
+
+VAR ValorAtual = [qtd_itens_vendidos]
+VAR ValorPrincipalFormatado = FORMAT(ValorAtual, ""#,##0"")
+VAR PercValue = [variacao_pedidos_mom_%]
+VAR PercentualFormatado = FORMAT(PercValue, ""+0.00%;-0.00%;0.00%"")
+-- Cores dinâmicas baseadas no percentual
+VAR CorSucesso = ""#166534"" -- Verde escuro
+VAR CorErro = ""#991b1b""    -- Vermelho escuro
+VAR CorBorda = ""#552CF3""
+VAR CorBackground = IF(PercValue >= 0, ""#f0fdf4"", ""#fef2f2"")
+VAR CorTexto = IF(PercValue >= 0, CorSucesso, CorErro)
+VAR Titulo = ""Itens Vendidos""
+
+RETURN
+
+""
+<div style='
+    font-family: Segoe UI, sans-serif;
+    background-color: #ffffff;
+    border: 2px solid "" & CorBorda & "";
+    border-radius: 16px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    height: 100%;
+    box-sizing: border-box;
+'>
+    <!-- Bloco do Ícone -->
+    <div style='
+        background-color: #f1f5f9;
+        padding: 8px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    '>
+        <svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='#3b82f6' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'>
+            <path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'></path>
+            <circle cx='9' cy='7' r='4'></circle>
+            <path d='M23 21v-2a4 4 0 0 0-3-3.87'></path>
+            <path d='M16 3.13a4 4 0 0 1 0 7.75'></path>
+        </svg>
+    </div>
+
+    <!-- Conteúdo de Texto -->
+    <div style='display: flex; flex-direction: column; align-items: flex-start; gap: 2px;'>
+        <div style='
+            color: #64748b;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        '>"" & Titulo & ""</div>
+        
+        <div style='
+            color: #0f172a;
+            font-size: 18px;
+            font-weight: 800;
+            line-height: 1.1;
+        '>"" & ValorPrincipalFormatado & ""</div>
+        
+        <!-- Badge Percentual (Abaixo do valor) -->
+        <div style='
+            background-color: "" & CorBackground & "";
+            color: "" & CorTexto & "";
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 700;
+            margin-top: 2px;
+            display: inline-block;
+        '>"" & PercentualFormatado & ""</div>
+    </div>
+</div>
+""
+
+"
+qtd_vendas_card;_html_cards;Measure;False;0;canal_v1;Semantic model;ccc929b0-662f-4788-b5c8-74815fdad0ca;;;"
+
+
+VAR ValorAtual = [qtd_vendas]
+VAR ValorPrincipalFormatado = FORMAT(ValorAtual, ""#,##0"")
+VAR PercValue = [variacao_qtd_vendas_mom_%]
+VAR PercentualFormatado = FORMAT(PercValue, ""+0.00%;-0.00%;0.00%"")
+-- Cores dinâmicas baseadas no percentual
+VAR CorSucesso = ""#166534"" -- Verde escuro
+VAR CorErro = ""#991b1b""    -- Vermelho escuro
+VAR CorBorda = ""#552CF3""
+VAR CorBackground = IF(PercValue >= 0, ""#f0fdf4"", ""#fef2f2"")
+VAR CorTexto = IF(PercValue >= 0, CorSucesso, CorErro)
+VAR Titulo = ""Quantidade de Vendas""
+
+RETURN
+
+""
+<div style='
+    font-family: Segoe UI, sans-serif;
+    background-color: #ffffff;
+    border: 2px solid "" & CorBorda & "";
+    border-radius: 16px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    height: 100%;
+    box-sizing: border-box;
+'>
+    <!-- Bloco do Ícone -->
+    <div style='
+        background-color: #f1f5f9;
+        padding: 8px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    '>
+        <svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='#3b82f6' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'>
+            <path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'></path>
+            <circle cx='9' cy='7' r='4'></circle>
+            <path d='M23 21v-2a4 4 0 0 0-3-3.87'></path>
+            <path d='M16 3.13a4 4 0 0 1 0 7.75'></path>
+        </svg>
+    </div>
+
+    <!-- Conteúdo de Texto -->
+    <div style='display: flex; flex-direction: column; align-items: flex-start; gap: 2px;'>
+        <div style='
+            color: #64748b;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        '>"" & Titulo & ""</div>
+        
+        <div style='
+            color: #0f172a;
+            font-size: 18px;
+            font-weight: 800;
+            line-height: 1.1;
+        '>"" & ValorPrincipalFormatado & ""</div>
+        
+        <!-- Badge Percentual (Abaixo do valor) -->
+        <div style='
+            background-color: "" & CorBackground & "";
+            color: "" & CorTexto & "";
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 700;
+            margin-top: 2px;
+            display: inline-block;
+        '>"" & PercentualFormatado & ""</div>
+    </div>
+</div>
+""
+
+"
+valor_receita_total_card;_html_cards;Measure;False;0;canal_v1;Semantic model;39af2b79-c6ff-4220-b595-3b44b1245293;;;"
+
+VAR ValorAtual = [receita_total]
+VAR ValorPrincipalFormatado = FORMAT(ValorAtual, ""R$ #,##0.00"")
+VAR PercValue = [variacao_receita_mom_%]
+VAR PercentualFormatado = FORMAT(PercValue, ""+0.00%;-0.00%;0.00%"")
+
+-- Cores dinâmicas baseadas no percentual
+VAR CorSucesso = ""#166534"" -- Verde escuro
+VAR CorErro = ""#991b1b""    -- Vermelho escuro
+VAR CorBorda = ""#552CF3""
+VAR CorBackground = IF(PercValue >= 0, ""#f0fdf4"", ""#fef2f2"")
+VAR CorTexto = IF(PercValue >= 0, CorSucesso, CorErro)
+VAR Titulo = ""Receita""
+
+RETURN
+
+""
+<div style='
+    font-family: Segoe UI, sans-serif;
+    background-color: #ffffff;
+    border: 2px solid "" & CorBorda & "";
+    border-radius: 16px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    height: 100%;
+    box-sizing: border-box;
+'>
+    <!-- Bloco do Ícone -->
+    <div style='
+        background-color: #f1f5f9;
+        padding: 8px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    '>
+        <svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='#3b82f6' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'>
+            <path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'></path>
+            <circle cx='9' cy='7' r='4'></circle>
+            <path d='M23 21v-2a4 4 0 0 0-3-3.87'></path>
+            <path d='M16 3.13a4 4 0 0 1 0 7.75'></path>
+        </svg>
+    </div>
+
+    <!-- Conteúdo de Texto -->
+    <div style='display: flex; flex-direction: column; align-items: flex-start; gap: 2px;'>
+        <div style='
+            color: #64748b;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        '>"" & Titulo & ""</div>
+        
+        <div style='
+            color: #0f172a;
+            font-size: 18px;
+            font-weight: 800;
+            line-height: 1.1;
+        '>"" & ValorPrincipalFormatado & ""</div>
+        
+        <!-- Badge Percentual (Abaixo do valor) -->
+        <div style='
+            background-color: "" & CorBackground & "";
+            color: "" & CorTexto & "";
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 700;
+            margin-top: 2px;
+            display: inline-block;
+        '>"" & PercentualFormatado & ""</div>
+    </div>
+</div>
+"""
+TopN;;Calculated Table;N/A;0;canal_v1;Semantic model;0d43a89d-d436-47a9-8757-a22b316da5b7;;;GENERATESERIES(1, DISTINCTCOUNT(f_vendas[d_produtos.Nome_Produto]), 1)
+Valor TopN;TopN;Measure;False;0;canal_v1;Semantic model;51a35f06-b89f-4ae3-90ba-7fdda40ad008;;;SELECTEDVALUE('TopN'[TopN])
+produtosOutros;;Calculated Table;N/A;0;canal_v1;Semantic model;3c6f1ea4-5ded-4549-aa7e-edf1cfd49c09;;;"
+UNION(
+ ALLNOBLANKROW(f_vendas[d_produtos.Nome_Produto]),
+ {""Outros""}
+)"

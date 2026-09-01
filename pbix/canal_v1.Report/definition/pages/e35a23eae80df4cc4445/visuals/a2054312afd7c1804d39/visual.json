@@ -1,0 +1,89 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "a2054312afd7c1804d39",
+  "position": {
+    "x": 1165,
+    "y": 55,
+    "z": 3000,
+    "height": 911.66666666666674,
+    "width": 731.66666666666674,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "autoSelectVisualType": true,
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "d_produtos"
+                    }
+                  },
+                  "Property": "Nome_Produto"
+                }
+              },
+              "queryRef": "d_produtos.Nome_Produto",
+              "nativeQueryRef": "Nome_Produto",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_medidas"
+                    }
+                  },
+                  "Property": "receita_ano_anterior"
+                }
+              },
+              "queryRef": "_medidas.receita_ano_anterior",
+              "nativeQueryRef": "receita_ano_anterior"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_medidas"
+                    }
+                  },
+                  "Property": "receita_total"
+                }
+              },
+              "queryRef": "_medidas.receita_total",
+              "nativeQueryRef": "receita_total"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_medidas"
+                  }
+                },
+                "Property": "receita_ano_anterior"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

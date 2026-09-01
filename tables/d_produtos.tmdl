@@ -1,4 +1,4 @@
-table Produtos
+table d_produtos
 	lineageTag: ef68ee15-880d-4ae3-944c-780647175a8d
 
 	column ID_Produto
@@ -25,7 +25,7 @@ table Produtos
 
 		annotation SummarizationSetBy = Automatic
 
-	partition Produtos = m
+	partition d_produtos = m
 		mode: import
 		source =
 				let

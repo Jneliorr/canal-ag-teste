@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "d4d247854558f197c6d4",
+  "position": {
+    "x": 736,
+    "y": 38,
+    "z": 2000,
+    "height": 362,
+    "width": 534,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "d_vendedores"
+                        }
+                      },
+                      "Property": "Nome_Vendedor"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(d_vendedores.Nome_Vendedor)",
+              "nativeQueryRef": "Nome_Vendedor"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "d_vendedores"
+                  }
+                },
+                "Property": "Nome_Vendedor"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

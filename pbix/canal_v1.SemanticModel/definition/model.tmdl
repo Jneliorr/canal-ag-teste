@@ -7,16 +7,22 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-annotation __PBI_TimeIntelligenceEnabled = 1
+annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBI_QueryOrder = ["Vendas","Produtos","Clientes","Vendedores"]
+annotation PBI_QueryOrder = ["f_vendas","d_produtos","d_clientes","d_vendedores","d_calendario","_medidas","_html_cards"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
-ref table Vendas
-ref table Produtos
-ref table Clientes
-ref table Vendedores
+ref table f_vendas
+ref table d_produtos
+ref table d_clientes
+ref table d_vendedores
+ref table d_calendario
+ref table _medidas
+ref table TopGrupos
+ref table produtosOutros
+ref table TopN
+ref table _html_cards
 
 ref cultureInfo pt-BR
 

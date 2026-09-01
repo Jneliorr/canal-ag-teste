@@ -1,0 +1,19 @@
+table TopGrupos
+	lineageTag: 81c8ebe6-5a9c-4f3a-b222-864c89c0f511
+
+	column Value
+		lineageTag: c105baa1-393b-4cd5-89b3-313a4a862f09
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TopGrupos = calculated
+		mode: import
+		source =
+				
+				{"Top Produtos","Demais Produtos"}
+
+	annotation PBI_Id = 2b3fec1e12614b27b951ca42f4fc398e
+

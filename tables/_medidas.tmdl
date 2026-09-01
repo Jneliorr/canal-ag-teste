@@ -1,0 +1,279 @@
+table _medidas
+	lineageTag: 85879845-1337-4bed-9b6c-bb3e6b352592
+
+	measure receita_total =
+			
+			SUMX(f_vendas, f_vendas[Quantidade] * f_vendas[Valor_Unitario])
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: ddd3f00f-948e-4960-8d11-36560b704ee9
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure qtd_itens_vendidos = ```
+			
+			SUM(f_vendas[Quantidade])
+			
+			```
+		formatString: 0
+		lineageTag: 7c4d7185-f014-4b41-9ff8-1fa9713eed96
+
+	measure qtd_vendas =
+			
+			COUNTROWS(f_vendas)
+		formatString: 0
+		lineageTag: 9ca6514b-c9dc-49bc-a1ac-9af416780fe7
+
+	measure qtd_clientes =
+			
+			DISTINCTCOUNT(f_vendas[ID_Cliente])
+		formatString: 0
+		lineageTag: 9b7074bf-3f25-458d-92da-2aff7c660c84
+
+	measure qtd_produtos_vendidos =
+			
+			DISTINCTCOUNT(f_vendas[ID_Produto])
+		formatString: 0
+		lineageTag: 4e72f00a-515f-4bff-a3ec-8712d2a31dc4
+
+	measure ticket_medio = ```
+			
+			DIVIDE(
+			    [receita_total], 
+			    [qtd_vendas], 
+			    0
+			)
+			
+			```
+		lineageTag: 7628945a-b7c5-404a-8090-bc98c9ae3486
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Rank v2' =
+			
+			VAR vTopN = 'TopN'[Valor TopN]
+			VAR VRank = RANKX(
+			    ALL(
+			        produtosOutros),
+			        [receita_total]
+			)
+			
+			RETURN
+			IF(
+			    ISINSCOPE(produtosOutros[d_produtos.Nome_Produto]),
+			    IF(
+			(SELECTEDVALUE(TopGrupos[Value]) = "Top Produtos" && VRank <= vTopN) ||
+			(SELECTEDVALUE(TopGrupos[Value]) = "Demais Produtos" && VRank > vTopN),
+			    VRank
+			),
+			IF(
+			    SELECTEDVALUE(TopGrupos[Value]) = "Top Produtos",
+			    1,
+			    2
+			)
+			)
+		formatString: 0
+		lineageTag: 0c8d4e0d-08af-4122-bbf5-4625e8975e9d
+
+	measure 'Faturamento TopN2' = ```
+			
+			
+			VAR vQtdTopn = [Valor TopN]
+			VAR vTopn = 
+			TOPN(
+			    vQtdTopn,
+			    ALL(produtosOutros),
+			    [receita_total]
+			)
+			VAR vFaturmamentoTop = 
+			CALCULATE(
+			    [receita_total],
+			   KEEPFILTERS( vTopn )
+			)
+			
+			VAR vOutros = 
+			EXCEPT(ALL(produtosOutros),vTopn)
+			
+			
+			VAR vFatOutros = 
+			CALCULATE(
+			    [receita_total],
+			   KEEPFILTERS( vOutros)
+			)
+			return
+			IF(
+			    SELECTEDVALUE(TopGrupos[Value]) = "Demais Produtos", vFatOutros,vFaturmamentoTop)
+			```
+		lineageTag: 9ceb0d51-21c4-4e0a-adaa-bfd27acb138d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure vendas% = ```
+			
+			VAR porcentagem_venda = 
+			CALCULATE(
+			    [receita_total],
+			        ALL(f_vendas)
+			)
+			return
+			DIVIDE( [receita_total], porcentagem_venda)
+			```
+		lineageTag: 8cc1b2b9-649f-407e-9517-296349124e5e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Calendario Vendas' = ```
+			
+			 VAR vDia = 
+			    SELECTEDVALUE(d_calendario[DataId])
+			
+			VAR vTotalVendas = 
+			[qtd_itens_vendidos]
+			
+			RETURN
+			[receita_total]
+			```
+		lineageTag: cdb612ca-67e8-4d53-a7c2-e44eefd05a19
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure receita_ano_anterior = ```
+			
+			    CALCULATE([receita_total],
+			        SAMEPERIODLASTYEAR(d_calendario[DataId]))
+			```
+		lineageTag: 99e24968-cc47-4fc9-9dd9-d906979f035c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure receita_mes_anterior = ```
+			
+			CALCULATE(
+			    [receita_total], 
+			    PREVIOUSMONTH(d_calendario[DataId])
+			)
+			```
+		lineageTag: 8f4c5374-9749-427e-ac35-d98867aec677
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure dif_receita_mom =
+			
+			VAR mes_atual = [receita_total]
+			VAR mes_ant = [receita_mes_anterior]
+			RETURN
+			IF(
+			    NOT ISBLANK(mes_ant) && NOT ISBLANK(mes_atual),
+			    mes_atual - mes_ant,
+			    BLANK()
+			)
+		lineageTag: 67cd404d-8837-492d-8765-b72f166b5c1d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure variacao_receita_mom_% =
+			
+			VAR diff = [dif_receita_mom]
+			VAR mes_ant = [receita_mes_anterior]
+			RETURN
+			DIVIDE(diff, mes_ant, BLANK())
+		lineageTag: a888efc3-60a8-471a-8c65-0b925df8b9f9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure qtd_vendas_mes_anterior = ```
+			
+			CALCULATE(
+			    [qtd_vendas], 
+			    PREVIOUSMONTH(d_calendario[DataId])
+			)
+			```
+		formatString: 0
+		lineageTag: 8b0a63e7-1903-41e9-af11-5068916094c5
+
+	measure variacao_pedidos_mom_% =
+			
+			DIVIDE(
+			    [qtd_vendas] - [qtd_vendas_mes_anterior],
+			    [qtd_vendas_mes_anterior],
+			    BLANK()
+			)
+		lineageTag: f7ec3e80-18c8-4637-9cbe-ce9464e3bb8f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure dif_qtd_vendas_mom =
+			
+			VAR _atual = [qtd_vendas]
+			VAR _anterior = [qtd_vendas_mes_anterior]
+			RETURN
+			IF(
+			    NOT ISBLANK(_anterior) && NOT ISBLANK(_atual),
+			    _atual - _anterior,
+			    BLANK()
+			)
+		formatString: 0
+		lineageTag: 7c09f6c3-8105-4d3b-8a9c-cf9e073260bb
+
+	measure variacao_qtd_vendas_mom_% =
+			
+			VAR _diff = [dif_qtd_vendas_mom]
+			VAR _anterior = [qtd_vendas_mes_anterior]
+			RETURN
+			DIVIDE(
+			    _diff,
+			    _anterior,
+			    BLANK()
+			)
+		lineageTag: 3f5a4a65-dc9c-4558-8987-998060195912
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure qtd_clientes_mes_anterior =
+			
+			CALCULATE(
+			    [qtd_clientes],
+			    PREVIOUSMONTH(d_calendario[DataId])
+			)
+		formatString: 0
+		lineageTag: 7a2f4b29-632b-44a5-8e97-890f1b253c90
+
+	measure dif_qtd_clientes_mom =
+			
+			VAR _atual = [qtd_clientes]
+			VAR _anterior = [qtd_clientes_mes_anterior]
+			RETURN
+			IF(
+			    NOT ISBLANK(_anterior) && NOT ISBLANK(_atual),
+			    _atual - _anterior,
+			    BLANK()
+			)
+		formatString: 0
+		lineageTag: d5c07ddb-4c0f-4940-8c72-734eb930dfdc
+
+	measure variacao_qtd_clientes_mom_% =
+			
+			VAR _diff = [dif_qtd_clientes_mom]
+			VAR _anterior = [qtd_clientes_mes_anterior]
+			RETURN
+			DIVIDE(
+			    _diff,
+			    _anterior,
+			    BLANK()
+			)
+		lineageTag: f8b649e4-2da7-40b0-b648-6d58285df7a0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition _medidas = m
+		mode: import
+		source =
+				let
+				  Origem = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Colunas Removidas" = Table.RemoveColumns(Origem,{"Coluna 1"})
+				in
+				  #"Colunas Removidas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

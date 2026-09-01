@@ -1,0 +1,20 @@
+table TopN
+	lineageTag: 0d43a89d-d436-47a9-8757-a22b316da5b7
+
+	measure 'Valor TopN' = SELECTEDVALUE('TopN'[TopN])
+		lineageTag: 51a35f06-b89f-4ae3-90ba-7fdda40ad008
+
+	column TopN
+		formatString: 0
+		lineageTag: e9bc7f77-cc8b-4093-a18c-57d5067e01d7
+		summarizeBy: sum
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TopN = calculated
+		mode: import
+		source = GENERATESERIES(1, DISTINCTCOUNT(f_vendas[d_produtos.Nome_Produto]), 1)
+
+	annotation PBI_Id = 9a50cffc55134262a370370788ba61aa
+

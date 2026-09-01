@@ -1,0 +1,352 @@
+table _html_cards
+	lineageTag: a265f339-ef46-471b-99aa-3de67fa885f0
+
+	measure qtd_clientes_card = ```
+			
+			
+			
+			VAR ValorAtual = [qtd_clientes]
+			VAR ValorPrincipalFormatado = FORMAT(ValorAtual, "#,##0")
+			VAR PercValue = [variacao_qtd_clientes_mom_%]
+			VAR PercentualFormatado = FORMAT(PercValue, "+0.00%;-0.00%;0.00%")
+			-- Cores dinâmicas baseadas no percentual
+			VAR CorSucesso = "#166534" -- Verde escuro
+			VAR CorErro = "#991b1b"    -- Vermelho escuro
+			VAR CorBorda = "#552CF3"
+			VAR CorBackground = IF(PercValue >= 0, "#f0fdf4", "#fef2f2")
+			VAR CorTexto = IF(PercValue >= 0, CorSucesso, CorErro)
+			VAR Titulo = "Clientes"
+			
+			RETURN
+			
+			"
+			<div style='
+			    font-family: Segoe UI, sans-serif;
+			    background-color: #ffffff;
+			    border: 2px solid " & CorBorda & ";
+			    border-radius: 16px;
+			    padding: 10px 14px;
+			    display: flex;
+			    align-items: center;
+			    justify-content: space-around;
+			    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+			    height: 100%;
+			    box-sizing: border-box;
+			'>
+			    <!-- Bloco do Ícone -->
+			    <div style='
+			        background-color: #f1f5f9;
+			        padding: 8px;
+			        border-radius: 10px;
+			        display: flex;
+			        align-items: center;
+			        justify-content: center;
+			    '>
+			        <svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='#3b82f6' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'>
+			            <path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'></path>
+			            <circle cx='9' cy='7' r='4'></circle>
+			            <path d='M23 21v-2a4 4 0 0 0-3-3.87'></path>
+			            <path d='M16 3.13a4 4 0 0 1 0 7.75'></path>
+			        </svg>
+			    </div>
+			
+			    <!-- Conteúdo de Texto -->
+			    <div style='display: flex; flex-direction: column; align-items: flex-start; gap: 2px;'>
+			        <div style='
+			            color: #64748b;
+			            font-size: 9px;
+			            font-weight: 700;
+			            letter-spacing: 0.02em;
+			            text-transform: uppercase;
+			        '>" & Titulo & "</div>
+			        
+			        <div style='
+			            color: #0f172a;
+			            font-size: 18px;
+			            font-weight: 800;
+			            line-height: 1.1;
+			        '>" & ValorPrincipalFormatado & "</div>
+			        
+			        <!-- Badge Percentual (Abaixo do valor) -->
+			        <div style='
+			            background-color: " & CorBackground & ";
+			            color: " & CorTexto & ";
+			            padding: 2px 6px;
+			            border-radius: 6px;
+			            font-size: 10px;
+			            font-weight: 700;
+			            margin-top: 2px;
+			            display: inline-block;
+			        '>" & PercentualFormatado & "</div>
+			    </div>
+			</div>
+			"
+			```
+		lineageTag: c02e1002-7c7f-4ef3-93b3-e041d7efce08
+
+	measure qtd_itens_vendidos_card = ```
+			
+			
+			
+			VAR ValorAtual = [qtd_itens_vendidos]
+			VAR ValorPrincipalFormatado = FORMAT(ValorAtual, "#,##0")
+			VAR PercValue = [variacao_pedidos_mom_%]
+			VAR PercentualFormatado = FORMAT(PercValue, "+0.00%;-0.00%;0.00%")
+			-- Cores dinâmicas baseadas no percentual
+			VAR CorSucesso = "#166534" -- Verde escuro
+			VAR CorErro = "#991b1b"    -- Vermelho escuro
+			VAR CorBorda = "#552CF3"
+			VAR CorBackground = IF(PercValue >= 0, "#f0fdf4", "#fef2f2")
+			VAR CorTexto = IF(PercValue >= 0, CorSucesso, CorErro)
+			VAR Titulo = "Itens Vendidos"
+			
+			RETURN
+			
+			"
+			<div style='
+			    font-family: Segoe UI, sans-serif;
+			    background-color: #ffffff;
+			    border: 2px solid " & CorBorda & ";
+			    border-radius: 16px;
+			    padding: 10px 14px;
+			    display: flex;
+			    align-items: center;
+			    justify-content: space-around;
+			    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+			    height: 100%;
+			    box-sizing: border-box;
+			'>
+			    <!-- Bloco do Ícone -->
+			    <div style='
+			        background-color: #f1f5f9;
+			        padding: 8px;
+			        border-radius: 10px;
+			        display: flex;
+			        align-items: center;
+			        justify-content: center;
+			    '>
+			        <svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='#3b82f6' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'>
+			            <path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'></path>
+			            <circle cx='9' cy='7' r='4'></circle>
+			            <path d='M23 21v-2a4 4 0 0 0-3-3.87'></path>
+			            <path d='M16 3.13a4 4 0 0 1 0 7.75'></path>
+			        </svg>
+			    </div>
+			
+			    <!-- Conteúdo de Texto -->
+			    <div style='display: flex; flex-direction: column; align-items: flex-start; gap: 2px;'>
+			        <div style='
+			            color: #64748b;
+			            font-size: 9px;
+			            font-weight: 700;
+			            letter-spacing: 0.02em;
+			            text-transform: uppercase;
+			        '>" & Titulo & "</div>
+			        
+			        <div style='
+			            color: #0f172a;
+			            font-size: 18px;
+			            font-weight: 800;
+			            line-height: 1.1;
+			        '>" & ValorPrincipalFormatado & "</div>
+			        
+			        <!-- Badge Percentual (Abaixo do valor) -->
+			        <div style='
+			            background-color: " & CorBackground & ";
+			            color: " & CorTexto & ";
+			            padding: 2px 6px;
+			            border-radius: 6px;
+			            font-size: 10px;
+			            font-weight: 700;
+			            margin-top: 2px;
+			            display: inline-block;
+			        '>" & PercentualFormatado & "</div>
+			    </div>
+			</div>
+			"
+			
+			
+			```
+		lineageTag: f5cdc465-206c-477d-943b-9537556f3ade
+
+	measure qtd_vendas_card = ```
+			
+			
+			
+			VAR ValorAtual = [qtd_vendas]
+			VAR ValorPrincipalFormatado = FORMAT(ValorAtual, "#,##0")
+			VAR PercValue = [variacao_qtd_vendas_mom_%]
+			VAR PercentualFormatado = FORMAT(PercValue, "+0.00%;-0.00%;0.00%")
+			-- Cores dinâmicas baseadas no percentual
+			VAR CorSucesso = "#166534" -- Verde escuro
+			VAR CorErro = "#991b1b"    -- Vermelho escuro
+			VAR CorBorda = "#552CF3"
+			VAR CorBackground = IF(PercValue >= 0, "#f0fdf4", "#fef2f2")
+			VAR CorTexto = IF(PercValue >= 0, CorSucesso, CorErro)
+			VAR Titulo = "Quantidade de Vendas"
+			
+			RETURN
+			
+			"
+			<div style='
+			    font-family: Segoe UI, sans-serif;
+			    background-color: #ffffff;
+			    border: 2px solid " & CorBorda & ";
+			    border-radius: 16px;
+			    padding: 10px 14px;
+			    display: flex;
+			    align-items: center;
+			    justify-content: space-around;
+			    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+			    height: 100%;
+			    box-sizing: border-box;
+			'>
+			    <!-- Bloco do Ícone -->
+			    <div style='
+			        background-color: #f1f5f9;
+			        padding: 8px;
+			        border-radius: 10px;
+			        display: flex;
+			        align-items: center;
+			        justify-content: center;
+			    '>
+			        <svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='#3b82f6' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'>
+			            <path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'></path>
+			            <circle cx='9' cy='7' r='4'></circle>
+			            <path d='M23 21v-2a4 4 0 0 0-3-3.87'></path>
+			            <path d='M16 3.13a4 4 0 0 1 0 7.75'></path>
+			        </svg>
+			    </div>
+			
+			    <!-- Conteúdo de Texto -->
+			    <div style='display: flex; flex-direction: column; align-items: flex-start; gap: 2px;'>
+			        <div style='
+			            color: #64748b;
+			            font-size: 9px;
+			            font-weight: 700;
+			            letter-spacing: 0.02em;
+			            text-transform: uppercase;
+			        '>" & Titulo & "</div>
+			        
+			        <div style='
+			            color: #0f172a;
+			            font-size: 18px;
+			            font-weight: 800;
+			            line-height: 1.1;
+			        '>" & ValorPrincipalFormatado & "</div>
+			        
+			        <!-- Badge Percentual (Abaixo do valor) -->
+			        <div style='
+			            background-color: " & CorBackground & ";
+			            color: " & CorTexto & ";
+			            padding: 2px 6px;
+			            border-radius: 6px;
+			            font-size: 10px;
+			            font-weight: 700;
+			            margin-top: 2px;
+			            display: inline-block;
+			        '>" & PercentualFormatado & "</div>
+			    </div>
+			</div>
+			"
+			
+			
+			```
+		lineageTag: ccc929b0-662f-4788-b5c8-74815fdad0ca
+
+	measure valor_receita_total_card = ```
+			
+			
+			VAR ValorAtual = [receita_total]
+			VAR ValorPrincipalFormatado = FORMAT(ValorAtual, "R$ #,##0.00")
+			VAR PercValue = [variacao_receita_mom_%]
+			VAR PercentualFormatado = FORMAT(PercValue, "+0.00%;-0.00%;0.00%")
+			
+			-- Cores dinâmicas baseadas no percentual
+			VAR CorSucesso = "#166534" -- Verde escuro
+			VAR CorErro = "#991b1b"    -- Vermelho escuro
+			VAR CorBorda = "#552CF3"
+			VAR CorBackground = IF(PercValue >= 0, "#f0fdf4", "#fef2f2")
+			VAR CorTexto = IF(PercValue >= 0, CorSucesso, CorErro)
+			VAR Titulo = "Receita"
+			
+			RETURN
+			
+			"
+			<div style='
+			    font-family: Segoe UI, sans-serif;
+			    background-color: #ffffff;
+			    border: 2px solid " & CorBorda & ";
+			    border-radius: 16px;
+			    padding: 10px 14px;
+			    display: flex;
+			    align-items: center;
+			    justify-content: space-around;
+			    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+			    height: 100%;
+			    box-sizing: border-box;
+			'>
+			    <!-- Bloco do Ícone -->
+			    <div style='
+			        background-color: #f1f5f9;
+			        padding: 8px;
+			        border-radius: 10px;
+			        display: flex;
+			        align-items: center;
+			        justify-content: center;
+			    '>
+			        <svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='#3b82f6' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'>
+			            <path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'></path>
+			            <circle cx='9' cy='7' r='4'></circle>
+			            <path d='M23 21v-2a4 4 0 0 0-3-3.87'></path>
+			            <path d='M16 3.13a4 4 0 0 1 0 7.75'></path>
+			        </svg>
+			    </div>
+			
+			    <!-- Conteúdo de Texto -->
+			    <div style='display: flex; flex-direction: column; align-items: flex-start; gap: 2px;'>
+			        <div style='
+			            color: #64748b;
+			            font-size: 9px;
+			            font-weight: 700;
+			            letter-spacing: 0.02em;
+			            text-transform: uppercase;
+			        '>" & Titulo & "</div>
+			        
+			        <div style='
+			            color: #0f172a;
+			            font-size: 18px;
+			            font-weight: 800;
+			            line-height: 1.1;
+			        '>" & ValorPrincipalFormatado & "</div>
+			        
+			        <!-- Badge Percentual (Abaixo do valor) -->
+			        <div style='
+			            background-color: " & CorBackground & ";
+			            color: " & CorTexto & ";
+			            padding: 2px 6px;
+			            border-radius: 6px;
+			            font-size: 10px;
+			            font-weight: 700;
+			            margin-top: 2px;
+			            display: inline-block;
+			        '>" & PercentualFormatado & "</div>
+			    </div>
+			</div>
+			"
+			```
+		lineageTag: 39af2b79-c6ff-4220-b595-3b44b1245293
+
+	partition _html_cards = m
+		mode: import
+		source =
+				let
+				  Origem = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Colunas Removidas" = Table.RemoveColumns(Origem,{"Coluna 1"})
+				in
+				  #"Colunas Removidas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

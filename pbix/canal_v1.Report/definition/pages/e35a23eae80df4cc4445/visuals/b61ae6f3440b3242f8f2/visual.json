@@ -1,0 +1,92 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "b61ae6f3440b3242f8f2",
+  "position": {
+    "x": 265,
+    "y": 598.33333333333337,
+    "z": 1000,
+    "height": 368,
+    "width": 864,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "d_calendario"
+                    }
+                  },
+                  "Property": "Mes Abreviado"
+                }
+              },
+              "queryRef": "d_calendario.Mes Abreviado",
+              "nativeQueryRef": "Mes Abreviado",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_medidas"
+                    }
+                  },
+                  "Property": "receita_total"
+                }
+              },
+              "queryRef": "_medidas.receita_total",
+              "nativeQueryRef": "receita_total"
+            }
+          ]
+        },
+        "Y2": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_medidas"
+                    }
+                  },
+                  "Property": "receita_ano_anterior"
+                }
+              },
+              "queryRef": "_medidas.receita_ano_anterior",
+              "nativeQueryRef": "receita_ano_anterior"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_medidas"
+                  }
+                },
+                "Property": "receita_ano_anterior"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

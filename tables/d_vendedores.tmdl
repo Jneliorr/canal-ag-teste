@@ -1,4 +1,4 @@
-table Vendedores
+table d_vendedores
 	lineageTag: ade6eb1a-7513-409b-b98e-8818be7b8ad0
 
 	column ID_Vendedor
@@ -25,7 +25,7 @@ table Vendedores
 
 		annotation SummarizationSetBy = Automatic
 
-	partition Vendedores = m
+	partition d_vendedores = m
 		mode: import
 		source =
 				let

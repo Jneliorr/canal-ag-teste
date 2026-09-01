@@ -1,0 +1,191 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "bb02235fd206ed608e56",
+  "position": {
+    "x": 0,
+    "y": 111.77057356608479,
+    "z": 2000,
+    "height": 941.29675810473816,
+    "width": 1356.0598503740648,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "d_produtos"
+                    }
+                  },
+                  "Property": "Categoria"
+                }
+              },
+              "queryRef": "d_produtos.Categoria",
+              "nativeQueryRef": "Categoria",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "d_produtos"
+                    }
+                  },
+                  "Property": "Nome_Produto"
+                }
+              },
+              "queryRef": "d_produtos.Nome_Produto",
+              "nativeQueryRef": "Nome_Produto",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_medidas"
+                    }
+                  },
+                  "Property": "qtd_itens_vendidos"
+                }
+              },
+              "queryRef": "_medidas.qtd_itens_vendidos",
+              "nativeQueryRef": "qtd_itens_vendidos"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_medidas"
+                    }
+                  },
+                  "Property": "qtd_vendas"
+                }
+              },
+              "queryRef": "_medidas.qtd_vendas",
+              "nativeQueryRef": "qtd_vendas"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_medidas"
+                    }
+                  },
+                  "Property": "receita_total"
+                }
+              },
+              "queryRef": "_medidas.receita_total",
+              "nativeQueryRef": "receita_total"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_medidas"
+                    }
+                  },
+                  "Property": "ticket_medio"
+                }
+              },
+              "queryRef": "_medidas.ticket_medio",
+              "nativeQueryRef": "ticket_medio"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_medidas"
+                    }
+                  },
+                  "Property": "vendas%"
+                }
+              },
+              "queryRef": "_medidas.PorcentagemVendasProduto",
+              "nativeQueryRef": "vendas%"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_medidas"
+                  }
+                },
+                "Property": "vendas%"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "d_produtos.Categoria"
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "d_produtos.Nome_Produto"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {}
+      }
+    ],
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "248.69938898675454D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "d_produtos.Categoria"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

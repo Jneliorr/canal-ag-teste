@@ -1,0 +1,22 @@
+table produtosOutros
+	lineageTag: 3c6f1ea4-5ded-4549-aa7e-edf1cfd49c09
+
+	column 'd_produtos.Nome_Produto'
+		lineageTag: b3dd32f0-d10f-4525-a515-1c8e7e194b23
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: f_vendas[d_produtos.Nome_Produto]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition produtosOutros = calculated
+		mode: import
+		source =
+				
+				UNION(
+				 ALLNOBLANKROW(f_vendas[d_produtos.Nome_Produto]),
+				 {"Outros"}
+				)
+
+	annotation PBI_Id = 2729e2e40f794d67b96470fce6745976
+

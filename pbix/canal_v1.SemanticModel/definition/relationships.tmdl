@@ -1,12 +1,20 @@
 relationship AutoDetected_92e57305-38ae-4bce-957b-2616ff73bd3e
-	fromColumn: Vendas.ID_Produto
-	toColumn: Produtos.ID_Produto
+	fromColumn: f_vendas.ID_Produto
+	toColumn: d_produtos.ID_Produto
 
 relationship AutoDetected_ae59214a-34ea-4ed2-beab-5beb64070c47
-	fromColumn: Vendas.ID_Cliente
-	toColumn: Clientes.ID_Cliente
+	fromColumn: f_vendas.ID_Cliente
+	toColumn: d_clientes.ID_Cliente
 
 relationship AutoDetected_c43d17d1-7fe5-430f-bc1f-746bb8b7c175
-	fromColumn: Vendas.ID_Vendedor
-	toColumn: Vendedores.ID_Vendedor
+	fromColumn: f_vendas.ID_Vendedor
+	toColumn: d_vendedores.ID_Vendedor
+
+relationship b368c512-6b31-5785-f80b-3a7dcd3f10e3
+	fromColumn: f_vendas.Data
+	toColumn: d_calendario.DataId
+
+relationship 782be332-6460-204e-8b10-5ef6150686a8
+	fromColumn: f_vendas.'d_produtos.Nome_Produto'
+	toColumn: produtosOutros.'d_produtos.Nome_Produto'
 

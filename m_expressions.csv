@@ -1,0 +1,71 @@
+﻿Name;Type;Source;Expression
+d_clientes;Table;canal_v1;"let
+  Origem = Csv.Document(File.Contents(""C:\Users\Nelio\Documents\GitHub\canal-ag-teste\data\raw\Clientes.csv""), [Delimiter = "","", Columns = 4, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+    #""Cabeçalhos Promovidos"" = Table.PromoteHeaders(Origem, [PromoteAllScalars=true]),
+    #""Tipo Alterado"" = Table.TransformColumnTypes(#""Cabeçalhos Promovidos"",{{""ID_Cliente"", type text}, {""Nome_Cliente"", type text}, {""Cidade"", type text}, {""Estado"", type text}})
+in
+    #""Tipo Alterado"""
+_medidas;Table;canal_v1;"let
+  Origem = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(""i44FAA=="", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#""Coluna 1"" = _t]),
+    #""Colunas Removidas"" = Table.RemoveColumns(Origem,{""Coluna 1""})
+in
+  #""Colunas Removidas"""
+d_vendedores;Table;canal_v1;"let
+  Origem = Csv.Document(File.Contents(""C:\Users\Nelio\Documents\GitHub\canal-ag-teste\data\raw\Vendedores.csv""), [Delimiter = "","", Columns = 3, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+    #""Cabeçalhos Promovidos"" = Table.PromoteHeaders(Origem, [PromoteAllScalars=true]),
+    #""Tipo Alterado"" = Table.TransformColumnTypes(#""Cabeçalhos Promovidos"",{{""ID_Vendedor"", type text}, {""Nome_Vendedor"", type text}, {""Equipe"", type text}})
+in
+  #""Tipo Alterado"""
+d_produtos;Table;canal_v1;"let
+  Origem = Csv.Document(File.Contents(""C:\Users\Nelio\Documents\GitHub\canal-ag-teste\data\raw\Produtos.csv""), [Delimiter = "","", Columns = 3, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+    #""Cabeçalhos Promovidos"" = Table.PromoteHeaders(Origem, [PromoteAllScalars=true]),
+    #""Tipo Alterado"" = Table.TransformColumnTypes(#""Cabeçalhos Promovidos"",{{""ID_Produto"", type text}, {""Nome_Produto"", type text}, {""Categoria"", type text}})
+in
+  #""Tipo Alterado"""
+f_vendas;Table;canal_v1;"let
+  Origem = Csv.Document(File.Contents(""C:\Users\Nelio\Documents\GitHub\canal-ag-teste\data\raw\Vendas.csv""), [Delimiter = "","", Columns = 7, QuoteStyle = QuoteStyle.None]),
+  #""Cabeçalhos promovidos"" = Table.PromoteHeaders(Origem, [PromoteAllScalars = true]),
+    #""Tipo Alterado"" = Table.TransformColumnTypes(#""Cabeçalhos promovidos"",{{""Data"", type date}, {""Quantidade"", Int64.Type}, {""Valor_Unitario"", type number}}, ""en-US""),
+    #""Consultas Mescladas"" = Table.NestedJoin(#""Tipo Alterado"", {""ID_Produto""}, d_produtos, {""ID_Produto""}, ""d_produtos"", JoinKind.LeftOuter),
+    #""d_produtos Expandido"" = Table.ExpandTableColumn(#""Consultas Mescladas"", ""d_produtos"", {""Nome_Produto""}, {""d_produtos.Nome_Produto""})
+in
+    #""d_produtos Expandido"""
+_html_cards;Table;canal_v1;"let
+  Origem = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(""i44FAA=="", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#""Coluna 1"" = _t]),
+    #""Colunas Removidas"" = Table.RemoveColumns(Origem,{""Coluna 1""})
+in
+  #""Colunas Removidas"""
+d_calendario;Table;canal_v1;"let
+/*DataMin = List.Min(#""d_fichaFinanceira""[DataPagamento]),*/
+/*DataMax = List.Max(#""d_fichaFinanceira""[DataPagamento]),*/
+/*AnoMin = Date.Year(DataMin), 
+AnoMax = Date.Year(DataMax),*/
+
+DataInicial = List.Min(#""f_vendas""[Data]),
+DataFinal = List.Max(#""f_vendas""[Data]),
+Duracao = Duration.Days(DataFinal - DataInicial) + 1,
+
+    Fonte = List.Dates(DataInicial, Duracao, #duration(1, 0, 0, 0)),
+    #""Convertido para Tabela"" = Table.FromList(Fonte, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+    #""Tipo Alterado"" = Table.TransformColumnTypes(#""Convertido para Tabela"",{{""Column1"", type date}}),
+    #""Colunas Renomeadas"" = Table.RenameColumns(#""Tipo Alterado"",{{""Column1"", ""Data""}}),
+    #""Ano Inserido"" = Table.AddColumn(#""Colunas Renomeadas"", ""Ano"", each Date.Year([Data]), Int64.Type),
+    #""Mes Inserido"" = Table.AddColumn(#""Ano Inserido"", ""Mês"", each Date.Month([Data]), Int64.Type),
+    #""Trimestre Inserido"" = Table.AddColumn(#""Mes Inserido"", ""Trimestre"", each Date.QuarterOfYear([Data]), Int64.Type),
+    #""Semana do Ano Inserido"" = Table.AddColumn(#""Trimestre Inserido"", ""Semana do Ano"", each Date.WeekOfYear([Data]), Int64.Type),
+    #""Dia Inserido"" = Table.AddColumn(#""Semana do Ano Inserido"", ""Dia"", each Date.Day([Data]), Int64.Type),
+    #""Nome do Mês Inserido"" = Table.AddColumn(#""Dia Inserido"", ""Nome do Mês"", each Date.MonthName([Data]), type text),
+    #""Nome do Dia Inserido"" = Table.AddColumn(#""Nome do Mês Inserido"", ""Nome do Dia"", each Date.DayOfWeekName([Data]), type text),
+    Personalizar1 = Table.RemoveColumns(#""Nome do Dia Inserido"",{""Trimestre"", ""Semana do Ano""}),
+    #""Coluna Condicional Adicionada"" = Table.AddColumn(Personalizar1, ""Semestre"", each if [Mês] <= 6 then ""Semestre 1"" else ""Semestre 2""),
+    #""Tipo Alterado1"" = Table.TransformColumnTypes(#""Coluna Condicional Adicionada"",{{""Semestre"", type text}}),
+    #""Coluna Condicional Adicionada1"" = Table.AddColumn(#""Tipo Alterado1"", ""Trimestre"", each if [Mês] <= 3 then ""Trimestre 1"" else if [Mês] <= 6 then ""Trimestre 2"" else if [Mês] <= 9 then ""Trimestre 3"" else ""Trimestre 4""),
+    #""Coluna Personalizada Adicionada"" = Table.AddColumn(#""Coluna Condicional Adicionada1"", ""Mes/Ano"", each Text.Combine({Text.Start(Text.Proper([Nome do Mês]), 3), ""/"", Text.From([Ano], ""pt-BR"")}), type text),
+    #""Colunas Renomeadas1"" = Table.RenameColumns(#""Coluna Personalizada Adicionada"",{{""Data"", ""DataId""}}),
+    #""Primeiros Caracteres Inseridos"" = Table.AddColumn(#""Colunas Renomeadas1"", ""Nome dia abreviado"", each Text.Start(Text.Proper([Nome do Dia]), 3), type text),
+    #""Coluna Condicional Adicionada2"" = Table.AddColumn(#""Primeiros Caracteres Inseridos"", ""Nome dia num"", each if [Nome dia abreviado] = ""Dom"" then 1 else if [Nome dia abreviado] = ""Seg"" then 2 else if [Nome dia abreviado] = ""Ter"" then 3 else if [Nome dia abreviado] = ""Qua"" then 4 else if [Nome dia abreviado] = ""Qui"" then 5 else if [Nome dia abreviado] = ""Sex"" then 6 else if [Nome dia abreviado] = ""Sáb"" then 7 else null),
+    #""Tipo Alterado2"" = Table.TransformColumnTypes(#""Coluna Condicional Adicionada2"",{{""Nome dia num"", Int64.Type}, {""Trimestre"", type text}}),
+    #""Semana do Ano Inserida"" = Table.AddColumn(#""Tipo Alterado2"", ""Semana do Ano"", each Date.WeekOfYear([DataId]), Int64.Type),
+    #""Primeiros Caracteres Inseridos1"" = Table.AddColumn(#""Semana do Ano Inserida"", ""Mes Abreviado"", each Text.Start(Text.Proper([Nome do Mês]), 3), type text)
+in
+    #""Primeiros Caracteres Inseridos1"""

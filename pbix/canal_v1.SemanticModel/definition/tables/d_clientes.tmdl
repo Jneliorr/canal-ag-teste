@@ -1,0 +1,49 @@
+table d_clientes
+	lineageTag: 2eb5758a-68ee-41ed-9774-6c66fee9836b
+
+	column ID_Cliente
+		dataType: string
+		lineageTag: 8d3a255b-4071-4570-a34a-f184e5164c1e
+		summarizeBy: none
+		sourceColumn: ID_Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nome_Cliente
+		dataType: string
+		lineageTag: a49eefe6-522b-4f5d-9562-37416311c690
+		summarizeBy: none
+		sourceColumn: Nome_Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cidade
+		dataType: string
+		lineageTag: bd9039e1-e8b5-409a-ab94-fcfa2b7e1437
+		summarizeBy: none
+		sourceColumn: Cidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column Estado
+		dataType: string
+		lineageTag: 2be5a066-f1ed-4546-b319-09fda9cd50a5
+		summarizeBy: none
+		sourceColumn: Estado
+
+		annotation SummarizationSetBy = Automatic
+
+	partition d_clientes = m
+		mode: import
+		source =
+				let
+				  Origem = Csv.Document(File.Contents("C:\Users\Nelio\Documents\GitHub\canal-ag-teste\data\raw\Clientes.csv"), [Delimiter = ",", Columns = 4, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Origem, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"ID_Cliente", type text}, {"Nome_Cliente", type text}, {"Cidade", type text}, {"Estado", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

@@ -1,4 +1,4 @@
-table Vendas
+table f_vendas
 	lineageTag: 58a09630-078a-405f-997b-eec78290b087
 
 	column ID_Venda
@@ -10,12 +10,15 @@ table Vendas
 		annotation SummarizationSetBy = Automatic
 
 	column Data
-		dataType: string
+		dataType: dateTime
+		formatString: Long Date
 		lineageTag: 15994a3f-1222-4c5b-b147-9bdf6ed6a5ca
 		summarizeBy: none
 		sourceColumn: Data
 
 		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column ID_Produto
 		dataType: string
@@ -42,9 +45,10 @@ table Vendas
 		annotation SummarizationSetBy = Automatic
 
 	column Quantidade
-		dataType: string
+		dataType: int64
+		formatString: 0
 		lineageTag: 03a84daa-bf68-4ff0-9f60-86bcaa4ced4f
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Quantidade
 
 		annotation SummarizationSetBy = Automatic
@@ -59,15 +63,25 @@ table Vendas
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	partition Vendas = m
+	column 'd_produtos.Nome_Produto'
+		dataType: string
+		lineageTag: 144487dd-20c5-4342-b88c-37db117c1212
+		summarizeBy: none
+		sourceColumn: d_produtos.Nome_Produto
+
+		annotation SummarizationSetBy = Automatic
+
+	partition f_vendas = m
 		mode: import
 		source =
 				let
 				  Origem = Csv.Document(File.Contents("C:\Users\Nelio\Documents\GitHub\canal-ag-teste\data\raw\Vendas.csv"), [Delimiter = ",", Columns = 7, QuoteStyle = QuoteStyle.None]),
 				  #"Cabeçalhos promovidos" = Table.PromoteHeaders(Origem, [PromoteAllScalars = true]),
-				    #"Tipo Alterado com Localidade" = Table.TransformColumnTypes(#"Cabeçalhos promovidos", {{"Valor_Unitario", type number}}, "en-US")
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos promovidos",{{"Data", type date}, {"Quantidade", Int64.Type}, {"Valor_Unitario", type number}}, "en-US"),
+				    #"Consultas Mescladas" = Table.NestedJoin(#"Tipo Alterado", {"ID_Produto"}, d_produtos, {"ID_Produto"}, "d_produtos", JoinKind.LeftOuter),
+				    #"d_produtos Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas", "d_produtos", {"Nome_Produto"}, {"d_produtos.Nome_Produto"})
 				in
-				    #"Tipo Alterado com Localidade"
+				    #"d_produtos Expandido"
 
 	annotation PBI_NavigationStepName = Navegação
 
